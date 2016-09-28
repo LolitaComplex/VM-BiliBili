@@ -1,5 +1,6 @@
 package com.doing.bilibili.fragment.general;
 
+import android.annotation.SuppressLint;
 import android.support.v4.app.Fragment;
 
 import com.doing.bilibili.R;
@@ -15,7 +16,13 @@ public class LoginWrapperFragment extends BaseStaticFragment {
 
     private BaseFragment mContentFragment;
 
+    public LoginWrapperFragment() {
+        super();
+    }
+
+    @SuppressLint("ValidFragment")
     public LoginWrapperFragment(BaseFragment contentFragment) {
+        this();
         mContentFragment = contentFragment;
     }
 

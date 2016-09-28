@@ -89,6 +89,7 @@
     <string name="login">登录</string>
     <string name="action_forget_pass">忘记密码?</string>
     <string name="search_tags_title">大家都在搜</string>
+    <string name="see_more">查看更多</string>
 
 
 </resources>

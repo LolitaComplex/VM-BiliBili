@@ -1,6 +1,11 @@
 package com.doing.bilibili.net;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import com.doing.bilibili.baselib.utils.NetUtils;
+import com.doing.bilibili.baselib.utils.UIUtils;
 
 import java.util.Map;
 
@@ -26,6 +31,11 @@ public class BiliNetUtils {
             public static final String CURSOR = "cursor";
 
             public static final String PAGESIZE = "pagesize";
+
+            public static final String DEVICE = "_device";
+            public static final String HWID = "_hwid";
+            public static final String SCALE = "scale";
+
         }
 
         public static class Value{
@@ -35,7 +45,11 @@ public class BiliNetUtils {
             public static final String CHANNEL = "wandoujia";
             public static final String MOBI_APP = "android";
             public static final String PLATFORM = "android";
+            public static final String DEVICE = "android";
             public static final String SCREEN = "xxhdpi";
+
+            public static final String HWID = "9ec238cf481b1087";
+
         }
     }
 
@@ -45,5 +59,13 @@ public class BiliNetUtils {
             sb.append(entry.getKey() + "=" + entry.getValue()+"&");
         }
         return NetUtils.md5(sb.substring(0, sb.length() - 1) + RequestParams.Value.APP_SECRET_KEY);
+    }
+
+    public static boolean statusOfNetwork() {
+        Context context = UIUtils.getContext();
+        ConnectivityManager service = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = service.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isAvailable();
+        //TODO 确实确认本地是否存在缓存的判断，后期记得补上
     }
 }

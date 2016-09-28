@@ -3,6 +3,8 @@ package com.doing.bilibili.baselib.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by Doing on 2016/9/9.
  *
@@ -13,6 +15,7 @@ public class Response<T> {
     private static final String FIELD_DATA = "data";
     private static final String FIELD_RESULT = "result";
     private static final String FIELD_MESSAGE = "message";
+    private static final String FIELD_LIST = "list";
 
 
     @SerializedName(FIELD_CODE)
@@ -21,6 +24,8 @@ public class Response<T> {
     private T result;
     @SerializedName(FIELD_DATA)
     private T data;
+    @SerializedName(FIELD_LIST)
+    private List<T> list;
     @SerializedName(FIELD_MESSAGE)
     private String message;
 
@@ -55,4 +60,13 @@ public class Response<T> {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+
 }

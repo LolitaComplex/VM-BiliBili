@@ -1,6 +1,7 @@
 package com.doing.bilibili.net;
 
 import com.doing.bilibili.net.api.HomeBangumiApi;
+import com.doing.bilibili.net.api.HomeDiscoverApi;
 import com.doing.bilibili.net.api.HomeLiveStreamApi;
 import com.doing.bilibili.net.api.HomeRecommendApi;
 
@@ -18,6 +19,8 @@ public class RetrofitHelper {
     public static final String APP_BASE_LIVE_URL = "http://live.bilibili.com";
 
     public static final String APP_BASE_BANGUMI_URL = "http://bangumi.bilibili.com";
+
+    public static final String APP_BASE_DISCOVER_URL = "http://s.search.bilibili.com";
 
     public static final String APP_BASE_URL = "http://app.bilibili.com";
 
@@ -50,6 +53,16 @@ public class RetrofitHelper {
                 .build();
 
         return retrofit.create(HomeBangumiApi.class);
+    }
+
+    public static HomeDiscoverApi getHomeDiscoverData() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APP_BASE_DISCOVER_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+
+        return retrofit.create(HomeDiscoverApi.class);
     }
 
 }
