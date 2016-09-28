@@ -152,8 +152,8 @@ public class LoginActivity extends BaseActivity implements View.OnFocusChangeLis
     }
 
     private void tintTextViewDrawable(TextView tvTint, int tintDrawableId, TextView tvDefault, int defaultDrawableId) {
-        tvTint.setCompoundDrawablesRelativeWithIntrinsicBounds(UIUtils.tint(tintDrawableId, R.color.colorPrimary), null, null, null);
-        tvDefault.setCompoundDrawablesRelativeWithIntrinsicBounds(UIUtils.getDrawable(defaultDrawableId), null, null, null);
+        tvTint.setCompoundDrawablesWithIntrinsicBounds(UIUtils.tint(tintDrawableId, R.color.colorPrimary), null, null, null);
+        tvDefault.setCompoundDrawablesWithIntrinsicBounds(UIUtils.getDrawable(defaultDrawableId), null, null, null);
     }
 
     @Override

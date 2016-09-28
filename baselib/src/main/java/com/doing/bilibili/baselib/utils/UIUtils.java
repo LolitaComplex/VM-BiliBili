@@ -7,6 +7,9 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Process;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.IntegerRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.text.SpannableStringBuilder;
@@ -99,13 +102,13 @@ public class UIUtils {
         imageView.setImageDrawable(drawable);
     }
 
-    public static Drawable tint(int drawableId, int color) {
+    public static Drawable tint(@DrawableRes int drawableId,@ColorRes int color) {
         Drawable wrapDrawable = DrawableCompat.wrap(getDrawable(drawableId).mutate());
         DrawableCompat.setTint(wrapDrawable, UIUtils.getColor(color));
         return wrapDrawable;
     }
 
-    public static Drawable tintList(int drawableId, int clolorList) {
+    public static Drawable tintList(@DrawableRes int drawableId,@ColorRes int clolorList) {
         Drawable wrapDrawable = DrawableCompat.wrap(getDrawable(drawableId).mutate());
         DrawableCompat.setTintList(wrapDrawable, ContextCompat.getColorStateList(getContext(),clolorList));
         return wrapDrawable;

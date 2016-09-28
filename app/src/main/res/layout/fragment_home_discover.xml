@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/shape_text_white_bg"
+            >
+
+            <TextView
+                android:id="@+id/DiscoverFragment_tv_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/ic_hint_search"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="搜索视频、番剧、UP主、AV号"
+                android:textColor="@color/gray"
+                />
+
+            <ImageView
+                android:id="@+id/DiscoverFragment_iv_zxing"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:layout_margin="1dp"
+                android:background="@drawable/item_touch_bg"
+                android:clickable="true"
+                android:scaleType="center"
+                android:src="@drawable/ic_scan"
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/General_flowlayouy_foldable"
+        layout="@layout/include_flowlayout_foldable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        />
+
+
+</android.support.v4.widget.NestedScrollView>
+

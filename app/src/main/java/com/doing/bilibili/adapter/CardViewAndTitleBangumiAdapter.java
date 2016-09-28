@@ -10,6 +10,7 @@ import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.bangumi.BangumiListBean;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -61,6 +62,11 @@ public class CardViewAndTitleBangumiAdapter extends CommonAdapter<BangumiListBea
         }else {
             holder.getView(R.id.CardViewItem_tv_regfresh).setVisibility(View.GONE);
         }
+
+        List<String> list = new ArrayList<>();
+        list.add("1111");
+
+
     }
 
 }
