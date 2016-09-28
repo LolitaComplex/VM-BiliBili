@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    >
+
+    <android.support.v7.widget.CardView
+        android:clickable="true"
+        style="@style/CardView_default"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/HomeBangumi_btn_animate_after"
+            style="@style/Button_bangumi_header"
+            android:background="@color/orange_light"
+            android:drawableStart="@drawable/ic_following_bangumi"
+            android:text="追番"
+            />
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        style="@style/CardView_default"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/HomeBangumi_btn_play_table"
+            style="@style/Button_bangumi_header"
+            android:background="@color/red"
+            android:drawableStart="@drawable/ic_bangumi_calendar_7"
+            android:drawablePadding="5dp"
+            android:text="放送表"
+            />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        style="@style/CardView_default"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/HomeBangumi_btn_index"
+            style="@style/Button_bangumi_header"
+            android:background="@color/blue"
+            android:drawableStart="@drawable/ic_bangumi_category"
+            android:text="索引"
+            />
+    </android.support.v7.widget.CardView>
+</LinearLayout>

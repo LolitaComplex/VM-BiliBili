@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/NavigationMenu_group1"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/NavigationMenu_home"
+            android:checked="true"
+            android:icon="@drawable/ic_home_black"
+            android:title="@string/menu_home"
+            />
+
+        <item
+            android:id="@+id/NavigationMenu_download"
+            android:icon="@drawable/ic_file_download_black"
+            android:title="@string/menu_download"
+            />
+    </group>
+
+    <group
+        android:id="@+id/NavigationMenu_group2"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/NavigationMenu_collectoin"
+            android:icon="@drawable/ic_star_black"
+            android:title="@string/menu_collection"
+            />
+
+        <item
+            android:id="@+id/NavigationMenu_history"
+            android:icon="@drawable/ic_history_black"
+            android:title="@string/menu_history"
+            />
+
+        <item
+            android:id="@+id/NavigationMenu_follow"
+            android:icon="@drawable/ic_people_black"
+            android:title="@string/menu_follow_with_interest"
+            />
+
+        <item
+            android:id="@+id/NavigationMenu_wallet"
+            android:icon="@drawable/ic_account_balance_wallet_black"
+            android:title="@string/menu_wallet"
+            />
+    </group>
+
+    <group
+        android:id="@+id/NavigationMenu_group3"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/NavigationMenu_style"
+            android:icon="@drawable/ic_color_lens_black"
+            android:title="@string/menu_color_lens"
+            />
+
+        <item
+            android:id="@+id/NavigationMenu_shop"
+            android:icon="@drawable/ic_shop_black"
+            android:title="@string/menu_shop"
+            />
+
+        <item
+            android:id="@+id/NavigationMenu_setting"
+            android:icon="@drawable/ic_settings_black"
+            android:title="@string/menu_setting"
+            />
+    </group>
+</menu>

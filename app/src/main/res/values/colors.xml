@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FA7198</color>
+    <color name="colorPrimary_dark">#96435B</color>
+    <color name="colorPrimaryDark">@color/colorPrimary</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#CCC</color>
+    <color name="red">#FF6666</color>
+    <color name="yellow">#e6db0c</color>
+    <color name="black">#000000</color>
+
+
+    <color name="text_black">#000000</color>
+    <color name="text_gray">#CCC</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_primary">@color/colorPrimary</color>
+    <color name="dark_gray">#777</color>
+    <color name="light_gray">#eee</color>
+
+
+    <color name="orange">#c45303</color>
+    <color name="orange_light">#fc9002</color>
+    <color name="orange_dark">#763100</color>
+    <color name="blue">#66ccff</color>
+    <color name="transparent">#00000000</color>
+
+    <drawable name="colorPrimary">#FA7198</drawable>
+    <drawable name="colorPrimary_dark">#96435B</drawable>
+</resources>

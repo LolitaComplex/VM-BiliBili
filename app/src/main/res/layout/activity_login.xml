@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/General_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="@string/login"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ImageView
+        android:id="@+id/LoginActivity_tv_logo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/layer_login_input_username"
+        />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/LoginActivity_tv_username"
+        style="@style/EditText_login"
+        android:drawableStart="@drawable/ic_login_username_default"
+        android:hint="你的手机号/邮箱"
+        />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/LoginActivity_tv_password"
+        style="@style/EditText_login"
+        android:drawableStart="@drawable/ic_login_password_default"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/LoginActivity_btn_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_btn_register"
+            android:text="注册账号"
+            android:textColor="@color/colorlist_btn_register"
+            />
+
+        <Button
+            android:id="@+id/LoginActivity_btn_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_login"
+            android:text="登录"
+            android:textColor="@color/text_white"
+            android:alpha="0.3"
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_click_on">#ccc</color>
+    <color name="item_click_off">#777</color>
+</resources>
