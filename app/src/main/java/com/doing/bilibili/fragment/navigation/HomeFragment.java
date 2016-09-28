@@ -63,7 +63,7 @@ public class HomeFragment extends BaseStaticFragment {
             @Override
             public void onPageScrollStateChanged(int state) {
                 switch (state) {
-                    case ViewPager.SCROLL_STATE_DRAGGING://ÍÏÒ·×´Ì¬
+                    case ViewPager.SCROLL_STATE_DRAGGING:
                         for(Fragment fragment : getChildFragmentManager ().getFragments()){
                             if (fragment instanceof HomeRecyclerFragment) {
                                 ((HomeRecyclerFragment)fragment).operatorBanner(false);
