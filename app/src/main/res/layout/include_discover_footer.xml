@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:divider="@drawable/line"
+        app:showDividers="middle"
+        >
+
+        <TextView
+            android:id="@+id/DiscoverFragment_tv_intreasting"
+            style="@style/TextStyle_DiscoverFragment"
+            android:drawableStart="@drawable/ic_group"
+            android:text="@string/group_intreasting"
+            />
+
+
+        <TextView
+            android:id="@+id/DiscoverFragment_tv_topic_center"
+            style="@style/TextStyle_DiscoverFragment"
+            android:drawableStart="@drawable/ic_header_topic_center"
+            android:text="@string/topic_center"
+            />
+
+        <TextView
+            android:id="@+id/DiscoverFragment_tv_activity_center"
+            style="@style/TextStyle_DiscoverFragment"
+            android:drawableStart="@drawable/ic_header_activity_center"
+            android:text="@string/activity_recommend_title"
+            />
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        app:divider="@drawable/line"
+        app:showDividers="middle"
+        >
+
+
+        <TextView
+            android:id="@+id/DiscoverFragment_tv_original_rank"
+            style="@style/TextStyle_DiscoverFragment"
+            android:drawableEnd="@drawable/ic_light_gray_arrow_right"
+            android:drawableStart="@drawable/ic_btn_rank_original"
+            android:text="@string/original_rank_center"
+            />
+
+
+        <TextView
+            android:id="@+id/DiscoverFragment_tv_all_rank"
+            style="@style/TextStyle_DiscoverFragment"
+            android:drawableEnd="@drawable/ic_light_gray_arrow_right"
+            android:drawableStart="@drawable/ic_btn_rank_all"
+            android:text="@string/all_partion_center"
+            />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+    <TextView
+        android:id="@+id/DiscoverFragment_tv_game_center"
+        style="@style/TextStyle_DiscoverFragment"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="15dp"
+        android:drawableStart="@drawable/ic_btn_game"
+        android:text="@string/game_center"
+        />
+
+
+</LinearLayout>
