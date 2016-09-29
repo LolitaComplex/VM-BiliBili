@@ -86,4 +86,16 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+
+
+    <style name="TextStyle_DiscoverFragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/item_touch_bg</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:padding">15dp</item>
+
+
+    </style>
+
 </resources>

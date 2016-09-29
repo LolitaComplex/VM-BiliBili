@@ -1,69 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:visibility="gone"
+    >
 
     <TextView
         style="@style/TextStyle_default"
-        android:textColor="@color/gray"
-        android:text="@string/search_tags_title" />
+        android:text="@string/search_tags_title"
+        android:textColor="@color/gray"/>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/DiscoverFragment_sv_flow"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="75dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
 
 
-        <com.zhy.view.flowlayout.TagFlowLayout
+        <org.apmem.tools.layouts.FlowLayout
             android:id="@+id/DiscoverFragment_flow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="fill"
+            android:orientation="horizontal"
+            app:layoutDirection="ltr"
+            app:weightDefault="1.0"
+
+            />
     </android.support.v4.widget.NestedScrollView>
 
     <LinearLayout
-        android:id="@+id/DiscoverFragment_fl_control"
+        android:id="@+id/DiscoverFragment_ll_control"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:paddingEnd="40dp"
         android:paddingStart="40dp"
-        android:paddingEnd="40dp">
+        android:paddingTop="10dp">
 
         <View
             android:id="@+id/DiscoverFragment_view_line1"
             android:layout_width="100dp"
             android:layout_height="1dp"
             android:layout_gravity="center"
-            android:background="@color/gray"
-            android:layout_marginEnd="5dp" />
+            android:layout_marginEnd="5dp"
+            android:background="@color/gray"/>
 
         <ImageView
             android:id="@+id/DiscoverFragment_iv_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_gray_round"
-            android:layout_marginRight="3dp" />
+            android:layout_marginRight="3dp"
+            android:src="@drawable/ic_arrow_gray_round"/>
 
         <TextView
             android:id="@+id/DiscoverFragment_tv_control"
             style="@style/TextStyle_12sp"
-            android:textColor="@color/black"
             android:layout_gravity="center_vertical"
+            android:layout_marginEnd="5dp"
             android:text="@string/see_more"
-            android:layout_marginEnd="5dp" />
+            android:textColor="@color/black"/>
 
         <View
             android:id="@+id/DiscoverFragment_view_line2"
             android:layout_width="100dp"
             android:layout_height="1dp"
             android:layout_gravity="center"
-            android:background="@color/gray" />
+            android:background="@color/gray"/>
 
     </LinearLayout>
 

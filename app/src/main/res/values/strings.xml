@@ -62,6 +62,7 @@
     <string name="menu_shop">应用推荐</string>
     <string name="menu_setting">设置与帮助</string>
     <string name="action_game">游戏</string>
+    <string name="game_center">游戏</string>
     <string name="action_download">下载</string>
     <string name="action_search">查询</string>
     <string name="hot_recommend_title">热门推荐</string>
@@ -78,6 +79,7 @@
     <string name="more_animate">更多动画</string>
     <string name="go_and_see">进去看看</string>
     <string name="topic_recommend_title">话题</string>
+    <string name="topic_center">话题中心</string>
     <string name="activity_recommend_title">活动中心</string>
     <string name="new_bangumi_title">新番连载</string>
     <string name="seeing">在看</string>
@@ -90,6 +92,10 @@
     <string name="action_forget_pass">忘记密码?</string>
     <string name="search_tags_title">大家都在搜</string>
     <string name="see_more">查看更多</string>
+    <string name="close_flow_tag">收起</string>
+    <string name="group_intreasting">兴趣圈</string>
+    <string name="original_rank_center">原创排行中心</string>
+    <string name="all_partion_center">全区排行中心</string>
 
 
 </resources>

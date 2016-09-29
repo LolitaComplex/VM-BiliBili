@@ -20,9 +20,9 @@ import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.tag.Tag;
 import com.doing.bilibili.net.BiliNetUtils;
 import com.doing.bilibili.net.RetrofitHelper;
-import com.zhy.view.flowlayout.FlowLayout;
-import com.zhy.view.flowlayout.TagAdapter;
-import com.zhy.view.flowlayout.TagFlowLayout;
+import com.doing.bilibili.uitls.AnimatorUtils;
+
+import org.apmem.tools.layouts.FlowLayout;
 
 import java.util.List;
 
@@ -43,12 +43,12 @@ public class DiscoverFragment extends BaseStaticFragment implements View.OnClick
     @BindView(R.id.DiscoverFragment_iv_zxing)
     protected ImageView mIvZxing;
     @BindView(R.id.DiscoverFragment_flow)
-    protected TagFlowLayout mFlowLayout;
+    protected FlowLayout mFlowLayout;
     @BindView(R.id.DiscoverFragment_sv_flow)
     protected NestedScrollView mFlowSrollView;
     @BindView(R.id.DiscoverFragment_iv_arrow)
     protected ImageView mIvArrow;
-    @BindView(R.id.DiscoverFragment_fl_control)
+    @BindView(R.id.DiscoverFragment_ll_control)
     protected LinearLayout mFlFlowControl;
     @BindView(R.id.General_flowlayouy_foldable)
     protected ViewGroup layout;
@@ -58,10 +58,31 @@ public class DiscoverFragment extends BaseStaticFragment implements View.OnClick
     protected View mLine1;
     @BindView(R.id.DiscoverFragment_view_line2)
     protected View mLine2;
+    @BindView(R.id.DiscoverFragment_tv_intreasting)
+    protected TextView mTvIntreasing;
+    @BindView(R.id.DiscoverFragment_tv_topic_center)
+    protected TextView mTvTopicCenter;
+    @BindView(R.id.DiscoverFragment_tv_activity_center)
+    protected TextView mTvActivityCenter;
+    @BindView(R.id.DiscoverFragment_tv_original_rank)
+    protected TextView mTvOriRank;
+    @BindView(R.id.DiscoverFragment_tv_all_rank)
+    protected TextView mTvAllRank;
+    @BindView(R.id.DiscoverFragment_tv_game_center)
+    protected TextView mTvGameCenter;
+
+
+    private boolean mFlowLayoutSwitch = false;
+    private AnimatorUtils mAnimationUtils;
 
     public static BaseFragment newInstance() {
 
         return new DiscoverFragment();
+    }
+
+    @Override
+    protected void initVariable() {
+        mAnimationUtils = new AnimatorUtils();
     }
 
     @Override
@@ -95,8 +116,8 @@ public class DiscoverFragment extends BaseStaticFragment implements View.OnClick
     }
 
     private void initBodyFlow() {
+        UIUtils.setTouchListener(mFlowSrollView, true);
         if (BiliNetUtils.statusOfNetwork()) {
-            layout.setVisibility(View.VISIBLE);
             RetrofitHelper.getHomeDiscoverData().getHomeDiscoverTagData()
                     .map(new Func1<Response<Tag>, List<Tag>>() {
                         @Override
@@ -121,12 +142,27 @@ public class DiscoverFragment extends BaseStaticFragment implements View.OnClick
     }
 
     private void initFlowLayout(final List<Tag> tags) {
-        mFlowLayout.setAdapter(new TagAdapter<Tag>(tags) {
+        mFlFlowControl.setOnClickListener(this);
+        for (int i = 0; i < tags.size(); i++) {
+            TextView inflate = (TextView) UIUtils.inflate(R.layout.item_flowlayout_discover, mFlowLayout);
+            inflate.setText(tags.get(i).getKeyword());
+            inflate.setTag(i);
+            inflate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int index = (Integer) v.getTag();
+                    ToastUtil.show(tags.get(index).getKeyword());
+                }
+            });
+            mFlowLayout.addView(inflate);
+        }
+        layout.setVisibility(View.VISIBLE);
+        //鸿洋FlowLayout
+        /*mFlowLayout.setAdapter(new TagAdapter<Tag>(tags) {
             @Override
-            public View getView(FlowLayout parent, int position, Tag tag) {
+            public View getView(FlowLayout parent, final int position, Tag tag) {
                 TextView textView = (TextView) UIUtils.inflate(
                         R.layout.item_flowlayout_discover, parent);
-                textView.setBackgroundResource(R.drawable.selector_tag_white);
                 textView.setText(tag.getKeyword());
                 return textView;
             }
@@ -138,7 +174,7 @@ public class DiscoverFragment extends BaseStaticFragment implements View.OnClick
                 ToastUtil.show(tags.get(position).getKeyword());
                 return false;
             }
-        });
+        });*/
 
     }
 
@@ -147,13 +183,19 @@ public class DiscoverFragment extends BaseStaticFragment implements View.OnClick
 
         mIvArrow.measure(0, 0);
         mTvControl.measure(0, 0);
-        int width = windowSize.width()- (mIvArrow.getMeasuredWidth() + mTvControl.getMeasuredWidth() + DensityUitls.dip2px(113.0f));
+        int width = windowSize.width() - (mIvArrow.getMeasuredWidth() + mTvControl.getMeasuredWidth() + DensityUitls.dip2px(123.0f));
         mLine1.getLayoutParams().width = width / 2 - 1;
         mLine2.getLayoutParams().width = width / 2;
     }
 
     private void initFooter() {
 
+        mTvIntreasing.setOnClickListener(this);
+        mTvTopicCenter.setOnClickListener(this);
+        mTvActivityCenter.setOnClickListener(this);
+        mTvOriRank.setOnClickListener(this);
+        mTvAllRank.setOnClickListener(this);
+        mTvGameCenter.setOnClickListener(this);
     }
 
     @Override
@@ -166,14 +208,27 @@ public class DiscoverFragment extends BaseStaticFragment implements View.OnClick
             case R.id.DiscoverFragment_iv_zxing:
                 ToastUtil.show("二维码");
                 break;
-        }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
+            case R.id.DiscoverFragment_ll_control:
+                int closeHeight = DensityUitls.dip2px(75);
+                int openHeight = DensityUitls.dip2px(200);
+                if (mFlowLayoutSwitch) {
+                    UIUtils.setTouchListener(mFlowSrollView, true);
+                    mTvControl.setText(getString(R.string.see_more));
+                    mFlowLayoutSwitch = false;
+                    mFlowSrollView.smoothScrollTo(0, 0);
+                    mAnimationUtils.setCloseAnimator(mFlowSrollView, 500, closeHeight, openHeight);
+                    mAnimationUtils.setRotateAnimator(mIvArrow, 500, 180, 360);
+                } else {
+                    UIUtils.setTouchListener(mFlowSrollView, false);
+                    mTvControl.setText(getString(R.string.close_flow_tag));
+                    mFlowLayoutSwitch = true;
+                    mAnimationUtils.setOpenAnimator(mFlowSrollView, 500, closeHeight, openHeight);
+                    mAnimationUtils.setRotateAnimator(mIvArrow, 500, 0, 180);
+                }
+
+                break;
+
+        }
     }
 }

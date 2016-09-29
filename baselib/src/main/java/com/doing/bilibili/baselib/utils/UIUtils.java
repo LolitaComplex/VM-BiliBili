@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -78,6 +79,10 @@ public class UIUtils {
         return LayoutInflater.from(getContext()).inflate(layoutId, parentLyaout, false);
     }
 
+    public static View inflate(int layoutId, ViewGroup parentLyaout,boolean attachToRoot) {
+        return LayoutInflater.from(getContext()).inflate(layoutId, parentLyaout, attachToRoot);
+    }
+
     public static void runOnUiThread(Runnable runnable) {
         int processId = Process.myTid();
         if (processId == BaseApplication.getMainId()) {
@@ -123,7 +128,15 @@ public class UIUtils {
             this.color = color;
             this.text = text;
         }
+    }
 
+    public static void setTouchListener(View view,final boolean scrollSwitch) {
+        view.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return scrollSwitch;
+            }
+        });
     }
 
     /***
