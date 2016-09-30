@@ -3,8 +3,11 @@ package com.doing.bilibili.fragment.home;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.baselib.base.BaseLoadingFragment;
@@ -52,9 +55,11 @@ public abstract class HomeRecyclerFragment<T> extends BaseLoadingFragment<T> {
     protected Banner initBanner(List<String> imageUrlList) {
         Banner banner = (Banner) UIUtils.inflate(R.layout.item_banner);
         banner.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DensityUitls.dip2px(110)));
-        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
-        banner.setIndicatorGravity(BannerConfig.RIGHT);
-        banner.isAutoPlay(true);
+        if (imageUrlList != null && imageUrlList.size() > 1) {
+            banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+            banner.setIndicatorGravity(BannerConfig.RIGHT);
+            banner.isAutoPlay(true);
+        }
         banner.setImages(imageUrlList);
 
         mBanner = banner;

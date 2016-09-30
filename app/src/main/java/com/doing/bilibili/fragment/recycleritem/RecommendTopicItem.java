@@ -16,15 +16,15 @@ import static com.doing.bilibili.adapter.HomeRecommendAdapter.TOPIC;
  * Created by Doing on 2016/9/21.
  *
  */
-public class TopicRecommendItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener {
+public class RecommendTopicItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener {
 
-    public TopicRecommendItem(Context context) {
+    public RecommendTopicItem(Context context) {
         super(context);
     }
 
     @Override
     public int getItemViewLayoutId() {
-        return R.layout.item_topic_recommend;
+        return R.layout.item_recommend_topic;
     }
 
     @Override
@@ -38,9 +38,9 @@ public class TopicRecommendItem extends ItemViewDelegateImp<Recommend> implement
 
     @Override
     public void convert(BaseViewHolder holder, Recommend recommend, int position) {
-        holder.setOnClickListener(R.id.TopicRecommend_header_more, this);
+        holder.setOnClickListener(R.id.RecommendTopicItem_header_more, this);
 
-        GridViewFactoryView cardViewFactory = holder.getView(R.id.TopicRecommend_body_cvf);
+        GridViewFactoryView cardViewFactory = holder.getView(R.id.RecommendTopicItem_body_cvf);
         cardViewFactory.setAdapter(new CommonAdapter<Recommend.BodyBean>(mContext, R.layout.layout_cardview_topic, recommend.getBody()) {
             @Override
             protected void convert(BaseViewHolder holder, Recommend.BodyBean bodyBean, int positon) {
@@ -52,7 +52,7 @@ public class TopicRecommendItem extends ItemViewDelegateImp<Recommend> implement
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.TopicRecommend_header_more:
+            case R.id.RecommendTopicItem_header_more:
                 ToastUtil.show("话题更多");
                 break;
         }

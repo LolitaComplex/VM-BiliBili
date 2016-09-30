@@ -20,12 +20,12 @@ import static com.doing.bilibili.adapter.HomeRecommendAdapter.REGION;
  * Created by Doing on 2016/9/21.
  *
  */
-public class CommonRecommendItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener {
+public class RecommendCommonItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener {
 
     private Map<String, Integer> iconBox;
 
 
-    public CommonRecommendItem(Context context) {
+    public RecommendCommonItem(Context context) {
         super(context);
         iconBox = new HashMap<>();
         iconBox.put("动画区", R.mipmap.ic_category_t1);
@@ -44,7 +44,7 @@ public class CommonRecommendItem extends ItemViewDelegateImp<Recommend> implemen
 
     @Override
     public int getItemViewLayoutId() {
-        return R.layout.item_common_recommend;
+        return R.layout.item_recommend_common;
     }
 
     @Override
@@ -60,22 +60,22 @@ public class CommonRecommendItem extends ItemViewDelegateImp<Recommend> implemen
     public void convert(BaseViewHolder holder, Recommend recommend, int position) {
         setLogAndTitle(holder, recommend.getHead());
 
-        holder.setOnClickListener(R.id.CommonRecommend_header_more, this);
-        holder.setOnClickListener(R.id.CommonRecommend_footer_btn, this);
-        holder.setOnClickListener(R.id.CommonRecommend_footer_ll, this);
+        holder.setOnClickListener(R.id.RecommendCommonItem_header_more, this);
+        holder.setOnClickListener(R.id.RecommendCommonItem_footer_btn, this);
+        holder.setOnClickListener(R.id.RecommendCommonItem_footer_ll, this);
 
-        GridViewFactoryView cardViewFactory = holder.getView(R.id.CommonRecommend_body_cvf);
+        GridViewFactoryView cardViewFactory = holder.getView(R.id.RecommendCommonItem_body_cvf);
         cardViewFactory.setAdapter(new CardViewRecommandAdapter(mContext, R.layout.layout_cardview_hotrecommend, recommend.getBody()));
     }
 
     private void setLogAndTitle(BaseViewHolder holder, Recommend.HeadBean headBean) {
         String title = headBean.getTitle();
-        holder.setText(R.id.CommonRecommend_header_tv_title, title);
-        holder.setImageBitmapRes(R.id.CommonRecommend_header_iv_logo, iconBox.get(title));
+        holder.setText(R.id.RecommendCommonItem_header_tv_title, title);
+        holder.setImageBitmapRes(R.id.RecommendCommonItem_header_iv_logo, iconBox.get(title));
 
         for (String key: iconBox.keySet()) {
             if (key.equals(title)) {
-                holder.setText(R.id.CommonRecommend_footer_btn, UIUtils.getString(R.string.more) + key.substring(0, 2));
+                holder.setText(R.id.RecommendCommonItem_footer_btn, UIUtils.getString(R.string.more) + key.substring(0, 2));
             }
         }
     }
@@ -83,13 +83,13 @@ public class CommonRecommendItem extends ItemViewDelegateImp<Recommend> implemen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.CommonRecommend_header_more:
+            case R.id.RecommendCommonItem_header_more:
                 ToastUtil.show("头部加载更多");
                 break;
-            case R.id.CommonRecommend_footer_btn:
+            case R.id.RecommendCommonItem_footer_btn:
                 ToastUtil.show("尾部加载更多");
                 break;
-            case R.id.CommonRecommend_footer_ll:
+            case R.id.RecommendCommonItem_footer_ll:
                 ToastUtil.show("动态");
                 break;
         }

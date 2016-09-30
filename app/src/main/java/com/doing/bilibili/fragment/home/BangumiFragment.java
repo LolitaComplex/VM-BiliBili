@@ -59,8 +59,7 @@ public class BangumiFragment extends HomeRecyclerFragment<HomeRealBangumi> imple
         for (BangumiBannerBean.HeadBean head : data.getAd().getHead()) {
             imageList.add(head.getImg());
         }
-        mBanner = initBanner(imageList);
-        adapterWrapper.addHeaderView(mBanner);
+        adapterWrapper.addHeaderView(initBanner(imageList));
         adapterWrapper.addHeaderView(initHeaderView());
 
         mRecyclerAdapter = new LoadMoreWrapper(adapterWrapper);
@@ -157,7 +156,7 @@ public class BangumiFragment extends HomeRecyclerFragment<HomeRealBangumi> imple
     }
 
     public View initHeaderView() {
-        View inflate = UIUtils.inflate(R.layout.item_headerview_bangumi);
+        View inflate = UIUtils.inflate(R.layout.item_bangumi_headerview);
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT);
 

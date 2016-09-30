@@ -1,7 +1,6 @@
 package com.doing.bilibili.fragment.recycleritem;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 
 import com.doing.bilibili.R;
@@ -12,24 +11,18 @@ import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.bangumi.BangumiItemBean;
 import com.doing.bilibili.ui.GridViewFactoryView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Created by Doing on 2016/9/23.
  *
  */
-public class CommonBangumiItem extends ItemViewDelegateImp<BangumiItemBean> implements View.OnClickListener {
+public class BangumiCommonItem extends ItemViewDelegateImp<BangumiItemBean> implements View.OnClickListener {
 
     private int[] iconBox;
     private int[] seasonIconBox;
     private String[] titleBox;
     private String[] titleMoreBox;
 
-    public CommonBangumiItem(Context context) {
+    public BangumiCommonItem(Context context) {
         super(context);
         iconBox = new int[]{R.mipmap.ic_category_t33,
                R.mipmap.ic_category_t153, 0,
@@ -46,7 +39,7 @@ public class CommonBangumiItem extends ItemViewDelegateImp<BangumiItemBean> impl
 
     @Override
     public int getItemViewLayoutId() {
-        return R.layout.item_common_bangumi;
+        return R.layout.item_bangumi_common;
     }
 
     @Override
@@ -62,10 +55,10 @@ public class CommonBangumiItem extends ItemViewDelegateImp<BangumiItemBean> impl
     public void convert(BaseViewHolder holder, BangumiItemBean data, int position) {
         initTitleAndLogo(holder, data, position);
 
-        holder.setOnClickListener(R.id.CommonBangumi_header_tv_more, this);
-        holder.getView(R.id.CommonBangumi_header_tv_more).setTag(position);
+        holder.setOnClickListener(R.id.BangumiCommonItem_header_tv_more, this);
+        holder.getView(R.id.BangumiCommonItem_header_tv_more).setTag(position);
 
-        GridViewFactoryView gridViewFratory = holder.getView(R.id.CommonBangumi_body_cvf);
+        GridViewFactoryView gridViewFratory = holder.getView(R.id.BangumiCommonItem_body_cvf);
 
         if(position == 0) {
             gridViewFratory.setRowCount(2, true);
@@ -73,7 +66,7 @@ public class CommonBangumiItem extends ItemViewDelegateImp<BangumiItemBean> impl
 
         if(position == 3){
             gridViewFratory.setVisibility(View.GONE);
-            holder.getView(R.id.CommonBangumi_header_tv_more).setVisibility(View.GONE);
+            holder.getView(R.id.BangumiCommonItem_header_tv_more).setVisibility(View.GONE);
         }else{
             gridViewFratory.setAdapter(new CardViewAndTitleBangumiAdapter(mContext,
                     R.layout.layout_cardview_and_title, data.getList(), position));
@@ -92,11 +85,11 @@ public class CommonBangumiItem extends ItemViewDelegateImp<BangumiItemBean> impl
             iconId = iconBox[position];
         }
 
-        holder.setText(R.id.CommonBangumi_header_tv_title, title);
-        holder.setImageBitmapRes(R.id.CommonBangumi_header_iv_logo, iconId);
+        holder.setText(R.id.BangumiCommonItem_header_tv_title, title);
+        holder.setImageBitmapRes(R.id.BangumiCommonItem_header_iv_logo, iconId);
 
         if (position < 3) {
-            holder.setText(R.id.CommonBangumi_header_tv_more, titleMoreBox[position]);
+            holder.setText(R.id.BangumiCommonItem_header_tv_more, titleMoreBox[position]);
         }
     }
 
@@ -105,7 +98,7 @@ public class CommonBangumiItem extends ItemViewDelegateImp<BangumiItemBean> impl
         int currentPostion = (int) v.getTag();
 
         switch (v.getId()) {
-            case R.id.CommonBangumi_header_tv_more:
+            case R.id.BangumiCommonItem_header_tv_more:
                 ToastUtil.show(titleMoreBox[currentPostion]);
                 break;
         }

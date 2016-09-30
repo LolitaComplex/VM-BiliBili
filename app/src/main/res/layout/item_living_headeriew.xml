@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/HomeLiving_attention"
+        style="@style/LinearLayout_LivingHeader">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/live_home_follow_anchor"
+            />
+
+        <TextView
+            style="@style/TextStyle_13sp"
+            android:text="@string/attention_anchor"
+            android:textColor="@color/text_black"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/HomeLiving_center"
+        style="@style/LinearLayout_LivingHeader">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/live_home_live_center"
+            />
+
+        <TextView
+            style="@style/TextStyle_13sp"
+            android:text="@string/living_center"
+            android:textColor="@color/text_black"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/HomeLiving_search"
+        style="@style/LinearLayout_LivingHeader">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/live_home_search_room"
+            />
+
+        <TextView
+            style="@style/TextStyle_13sp"
+            android:text="@string/living_search"
+            android:textColor="@color/text_black"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/HomeLiving_all_partion"
+        style="@style/LinearLayout_LivingHeader">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/live_home_all_category"
+            />
+
+        <TextView
+            style="@style/TextStyle_13sp"
+            android:text="@string/all_partion"
+            android:textColor="@color/text_black"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>

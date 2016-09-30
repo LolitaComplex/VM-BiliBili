@@ -48,6 +48,7 @@ public class GridViewFactoryView extends GridLayout {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.GridViewFactoryView);
         mIsItemCardView = typedArray.getBoolean(R.styleable.GridViewFactoryView_isItemCardVIew, true);
+        mCardViewCount = typedArray.getInteger(R.styleable.GridViewFactoryView_gridSize, 0);
         setContentViewRes();
 
         typedArray.recycle();
@@ -77,7 +78,9 @@ public class GridViewFactoryView extends GridLayout {
             setColumnCount(1, false);
         }
 
-        mCardViewCount = getRowCount() * getColumnCount();
+        if (mCardViewCount == 0) {
+            mCardViewCount = getRowCount() * getColumnCount();
+        }
 
         for (int i = 0; i < this.getChildCount(); i++) {
             this.removeViewAt(i);
@@ -104,8 +107,9 @@ public class GridViewFactoryView extends GridLayout {
                 contentView = new FrameLayout(getContext());
             }
 
-            params.setMargins(10, 10, 10, 10);
-            int contentViewWidth = mWindowmetrics.widthPixels - 40 - dip2px(20);
+            int marginPx = dip2px(6);
+            params.setMargins(marginPx, marginPx, marginPx, marginPx);
+            int contentViewWidth = mWindowmetrics.widthPixels - dip2px(44);
             params.width = size == 1 && mCardViewCount != 1 ? contentViewWidth / getColumnCount() : ViewGroup.LayoutParams.MATCH_PARENT;
             params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
 

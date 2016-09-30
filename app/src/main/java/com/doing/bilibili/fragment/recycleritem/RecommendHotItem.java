@@ -19,15 +19,15 @@ import static com.doing.bilibili.adapter.HomeRecommendAdapter.HOT_RECOMMEND;
  * Created by Doing on 2016/9/19.
  *
  */
-public class HotRecommendItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener {
+public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener {
 
-    public HotRecommendItem(Context context) {
+    public RecommendHotItem(Context context) {
         super(context);
     }
 
     @Override
     public int getItemViewLayoutId() {
-        return R.layout.item_hot_recommend;
+        return R.layout.item_recommend_hot;
     }
 
     @Override
@@ -41,23 +41,23 @@ public class HotRecommendItem extends ItemViewDelegateImp<Recommend> implements 
 
     @Override
     public void convert(BaseViewHolder holder, Recommend recommend, int position) {
-        ImageView imageView = holder.getView(R.id.HotRecommendItem_footer_iv_refresh);
+        ImageView imageView = holder.getView(R.id.RecommendHotItem_footer_iv_refresh);
         UIUtils.tint(imageView, R.drawable.ic_item_refresh, R.color.colorPrimary);
 
-        holder.setOnClickListener(R.id.HotRecommendItem_footer, this);
-        holder.setOnClickListener(R.id.HotRecommendItem_header_ll_rank, this);
+        holder.setOnClickListener(R.id.RecommendHotItem_footer, this);
+        holder.setOnClickListener(R.id.RecommendHotItem_header_ll_rank, this);
 
-        GridViewFactoryView cardViewFactory = holder.getView(R.id.HotRecommendItem_body_cvf);
+        GridViewFactoryView cardViewFactory = holder.getView(R.id.RecommendHotItem_body_cvf);
         cardViewFactory.setAdapter(new CardViewRecommandAdapter(mContext, R.layout.layout_cardview_hotrecommend, recommend.getBody()));
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.HotRecommendItem_header_ll_rank:
+            case R.id.RecommendHotItem_header_ll_rank:
                 ToastUtil.show("Rank被点击了");
                 break;
-            case R.id.HotRecommendItem_footer:
+            case R.id.RecommendHotItem_footer:
                 View imageView = ((ViewGroup) v).getChildAt(1);
                 if(imageView instanceof ImageView){
                     imageView.animate().rotation(360f).setDuration(1000).start();

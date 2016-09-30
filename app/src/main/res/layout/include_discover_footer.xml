@@ -63,7 +63,7 @@
             style="@style/TextStyle_DiscoverFragment"
             android:drawableEnd="@drawable/ic_light_gray_arrow_right"
             android:drawableStart="@drawable/ic_btn_rank_all"
-            android:text="@string/all_partion_center"
+            android:text="@string/all_rank_center"
             />
 
     </android.support.v7.widget.LinearLayoutCompat>

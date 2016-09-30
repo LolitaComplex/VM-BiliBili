@@ -129,8 +129,7 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
                 ToastUtil.show("主页");
                 break;
             case R.id.NavigationMenu_download:
-                showFragment[0] = createFragment(NavigationFragmentFactory.APPLICATION_CACHE);
-                ToastUtil.show("离线缓存");
+                AppCacheActivity.newInstance(this);
                 break;
             case R.id.NavigationMenu_collectoin:
                 action(new Action0() {
@@ -139,7 +138,6 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
                         showFragment[0] = createFragment(NavigationFragmentFactory.COLLECTION);
                     }
                 });
-                ToastUtil.show("我的收藏");
                 break;
             case R.id.NavigationMenu_history:
                 showFragment[0] = createFragment(NavigationFragmentFactory.HISTORY);
@@ -152,7 +150,6 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
                         showFragment[0] = createFragment(NavigationFragmentFactory.FOLLOW_PEOPLE);
                     }
                 });
-                ToastUtil.show("关注的人");
                 break;
             case R.id.NavigationMenu_wallet:
                 action(new Action0() {
@@ -161,7 +158,6 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
                         showFragment[0] = createFragment(NavigationFragmentFactory.WALLET);
                     }
                 });
-                ToastUtil.show("我的钱包");
                 break;
             case R.id.NavigationMenu_style:
                 showFragment[0] = createFragment(NavigationFragmentFactory.THEME_SELECT);

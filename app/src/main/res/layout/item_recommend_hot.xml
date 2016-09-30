@@ -7,7 +7,7 @@
     >
 
     <LinearLayout
-        android:id="@+id/HotRecommendItem_header_ll"
+        android:id="@+id/RecommendHotItem_header_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -15,14 +15,14 @@
         >
 
         <ImageView
-            android:id="@+id/HotRecommendItem_header_iv_logo"
+            android:id="@+id/RecommendHotItem_header_iv_logo"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@mipmap/ic_category_promo"
             />
 
         <TextView
-            android:id="@+id/HotRecommendItem_header_tv_title"
+            android:id="@+id/RecommendHotItem_header_tv_title"
             style="@style/TextStyle_16sp"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -32,7 +32,7 @@
 
 
     <LinearLayout
-        android:id="@+id/HotRecommendItem_header_ll_rank"
+        android:id="@+id/RecommendHotItem_header_ll_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -61,20 +61,20 @@
     </LinearLayout>
 
     <com.doing.bilibili.ui.GridViewFactoryView
-        android:id="@+id/HotRecommendItem_body_cvf"
+        android:id="@+id/RecommendHotItem_body_cvf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/HotRecommendItem_header_ll"
+        android:layout_below="@id/RecommendHotItem_header_ll"
         android:layout_marginTop="5dp"
         android:columnCount="2"
         android:rowCount="2"
         />
 
     <LinearLayout
-        android:id="@+id/HotRecommendItem_footer"
+        android:id="@+id/RecommendHotItem_footer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/HotRecommendItem_body_cvf"
+        android:layout_below="@id/RecommendHotItem_body_cvf"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:gravity="center_vertical"
@@ -82,14 +82,14 @@
         >
 
         <TextView
-            android:id="@+id/HotRecommendItem_footer_tv"
+            android:id="@+id/RecommendHotItem_footer_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hot_recommend_changitem"
             />
 
         <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/HotRecommendItem_footer_iv_refresh"
+            android:id="@+id/RecommendHotItem_footer_iv_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

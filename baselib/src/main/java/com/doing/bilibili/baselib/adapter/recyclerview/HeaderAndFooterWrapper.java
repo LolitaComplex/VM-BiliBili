@@ -31,7 +31,7 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
         if (isHeaderViewPosition(position)) {
             return mHeaderViews.keyAt(position);
         }else if (isFooterViewPosition(position)) {
-            return mFooterViews.keyAt(position);
+            return mFooterViews.keyAt(position - getRealItemCount() - getHeaderCount());
         }
 
         return mInterAdapter.getItemViewType(position - getHeaderCount());
@@ -102,7 +102,7 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
     }
 
     private boolean isFooterViewPosition(int position) {
-        return position > getRealItemCount() + getHeaderCount();
+        return position >= getRealItemCount() + getHeaderCount();
     }
 
 

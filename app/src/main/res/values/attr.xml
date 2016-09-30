@@ -3,5 +3,6 @@
 
     <declare-styleable name="GridViewFactoryView">
         <attr name="isItemCardVIew" format="boolean"/>
+        <attr name="gridSize" format="integer"/>
     </declare-styleable>
 </resources>

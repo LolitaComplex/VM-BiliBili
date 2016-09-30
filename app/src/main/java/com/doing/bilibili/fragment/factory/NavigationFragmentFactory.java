@@ -1,7 +1,6 @@
 package com.doing.bilibili.fragment.factory;
 
 import com.doing.bilibili.baselib.base.BaseFragment;
-import com.doing.bilibili.fragment.navigation.ApplicationCacheFragment;
 import com.doing.bilibili.fragment.navigation.CollectionFragment;
 import com.doing.bilibili.fragment.navigation.FollowPeopleFragment;
 import com.doing.bilibili.fragment.navigation.HistoryFragment;
@@ -19,12 +18,11 @@ import java.util.Map;
 public class NavigationFragmentFactory {
 
     public static final int HOME = 0;
-    public static final int APPLICATION_CACHE = 1;
-    public static final int COLLECTION = 2;
-    public static final int HISTORY = 3;
-    public static final int FOLLOW_PEOPLE = 4;
-    public static final int WALLET = 5;
-    public static final int THEME_SELECT = 6;
+    public static final int COLLECTION = 1;
+    public static final int HISTORY = 2;
+    public static final int FOLLOW_PEOPLE = 3;
+    public static final int WALLET = 4;
+    public static final int THEME_SELECT = 5;
 
     private static Map<Integer, BaseFragment> factory = new HashMap<>();
 
@@ -34,9 +32,6 @@ public class NavigationFragmentFactory {
             switch (position) {
                 case HOME:
                     fragment = HomeFragment.newInstance();
-                    break;
-                case APPLICATION_CACHE:
-                    fragment = ApplicationCacheFragment.newInstance();
                     break;
                 case COLLECTION:
                     fragment = CollectionFragment.newInstance();

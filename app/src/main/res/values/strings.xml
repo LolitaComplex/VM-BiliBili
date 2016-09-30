@@ -45,6 +45,15 @@
         <item>游戏中心</item>
     </string-array>
 
+    <string-array name="array_offline_cache_spinner">
+        <item>按标题</item>
+        <item>按时间</item>
+        <item>按剧集</item>
+
+    </string-array>
+
+
+
     <string name="app_name">MyBiLiBiLi</string>
     <string name="action_settings">Settings</string>
     <string name="SplashActivity_copyright">Copyright © 2016-XXXX Doing</string>
@@ -95,7 +104,12 @@
     <string name="close_flow_tag">收起</string>
     <string name="group_intreasting">兴趣圈</string>
     <string name="original_rank_center">原创排行中心</string>
-    <string name="all_partion_center">全区排行中心</string>
+    <string name="all_rank_center">全区排行中心</string>
+    <string name="live_recommend">推荐主播</string>
+    <string name="attention_anchor">关注主播</string>
+    <string name="living_center">直播中心</string>
+    <string name="living_search">搜索直播</string>
+    <string name="all_partion">全部分类</string>
 
 
 </resources>

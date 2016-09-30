@@ -5,28 +5,23 @@ import android.view.View;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
-import com.doing.bilibili.baselib.adapter.recyclerview.CommonAdapter;
-import com.doing.bilibili.baselib.adapter.recyclerview.ItemViewDelegate;
 import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.entity.bangumi.BangumiItemBean;
 import com.doing.bilibili.entity.bangumi.BangumiListBean;
-import com.doing.bilibili.ui.GridViewFactoryView;
-
-import java.util.List;
 
 /**
  * Created by Doing on 2016/9/26.
  *
  */
-public class RefreshBangumiItem extends ItemViewDelegateImp<BangumiItemBean> implements View.OnClickListener {
+public class BangumiRefreshItem extends ItemViewDelegateImp<BangumiItemBean> implements View.OnClickListener {
 
-    public RefreshBangumiItem(Context context) {
+    public BangumiRefreshItem(Context context) {
         super(context);
     }
 
     @Override
     public int getItemViewLayoutId() {
-        return R.layout.item_refresh_bangumi;
+        return R.layout.item_bangumi_refresh;
     }
 
     @Override

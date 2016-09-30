@@ -7,50 +7,47 @@
     >
 
     <LinearLayout
-        android:id="@+id/CommonRecommend_header_ll"
+        android:id="@+id/GeneralLivingItem_header_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:layout_marginTop="5dp"
         >
 
         <ImageView
-            android:id="@+id/CommonRecommend_header_iv_logo"
+            android:id="@+id/GeneralLivingItem_iv_logo"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@mipmap/ic_category_t1"
+            android:src="@drawable/ic_head_live"
             />
 
         <TextView
-            android:id="@+id/CommonRecommend_header_tv_title"
+            android:id="@+id/GeneralLivingItem_header_tv"
             style="@style/TextStyle_16sp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="@string/animate_recommend_title"
+            android:layout_gravity="center_vertical"
+            android:text="@string/hot_recommend_title"
             />
     </LinearLayout>
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/CommonRecommend_header_more"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/GeneralLivingItem_header_tv_current_live"
+        style="@style/TextStyle_default"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/CommonRecommend_header_ll"
-        android:background="@drawable/selector_text_gray_bg_squarence"
         android:clickable="true"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:text="@string/go_and_see"
-        android:textColor="@color/text_white"
-        android:textSize="12sp"
+        android:drawableEnd="@drawable/ic_gray_arrow_right"
+        android:drawablePadding="3dp"
+        android:padding="8dp"
+        android:text="@string/playing_live_current_end"
         />
 
 
     <com.doing.bilibili.ui.GridViewFactoryView
-        android:id="@+id/CommonRecommend_body_cvf"
+        android:id="@+id/GeneralLivingItem_body_cvf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/CommonRecommend_header_ll"
+        android:layout_below="@id/GeneralLivingItem_header_ll"
         android:layout_marginTop="5dp"
         android:columnCount="2"
         android:rowCount="2"
@@ -58,33 +55,33 @@
 
 
     <Button
-        android:id="@+id/CommonRecommend_footer_btn"
+        android:id="@+id/GeneralLivingItem_footer_btn"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/CommonRecommend_body_cvf"
         android:layout_marginTop="5dp"
-        android:text="@string/more_animate"
+        android:layout_below="@id/GeneralLivingItem_body_cvf"
+        android:text="@string/look_at_more"
         />
 
     <LinearLayout
-        android:id="@+id/CommonRecommend_footer_ll"
+        android:id="@+id/GeneralLivingItem_footer_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/CommonRecommend_body_cvf"
+        android:layout_below="@id/GeneralLivingItem_body_cvf"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         >
 
         <TextView
-            android:id="@+id/CommonRecommend_footer_tv"
+            android:id="@+id/GeneralLivingItem_footer_tv"
             style="@style/TextStyle_12sp"
             android:text="@string/playing_live_click_refresh"
             />
 
         <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/CommonRecommend_refresh_iv"
+            android:id="@+id/GeneralLivingItem_refresh_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

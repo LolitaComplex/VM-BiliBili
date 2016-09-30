@@ -4,12 +4,12 @@ import android.content.Context;
 
 import com.doing.bilibili.baselib.adapter.recyclerview.MultiItemTypeAdapter;
 import com.doing.bilibili.entity.recommend.Recommend;
-import com.doing.bilibili.fragment.recycleritem.ActivityRecommendItem;
-import com.doing.bilibili.fragment.recycleritem.BangumiRecommendItem;
-import com.doing.bilibili.fragment.recycleritem.CommonRecommendItem;
-import com.doing.bilibili.fragment.recycleritem.HotRecommendItem;
-import com.doing.bilibili.fragment.recycleritem.LivingItem;
-import com.doing.bilibili.fragment.recycleritem.TopicRecommendItem;
+import com.doing.bilibili.fragment.recycleritem.RecommendActivityItem;
+import com.doing.bilibili.fragment.recycleritem.RecommendBangumiItem;
+import com.doing.bilibili.fragment.recycleritem.RecommendCommonItem;
+import com.doing.bilibili.fragment.recycleritem.RecommendHotItem;
+import com.doing.bilibili.fragment.recycleritem.RecommendLivingItem;
+import com.doing.bilibili.fragment.recycleritem.RecommendTopicItem;
 
 import java.util.List;
 
@@ -30,11 +30,11 @@ public class HomeRecommendAdapter extends MultiItemTypeAdapter<Recommend> {
     public HomeRecommendAdapter(Context context, List<Recommend> data) {
         super(context, data);
 
-        addItemViewDelegate(new HotRecommendItem(context));
-        addItemViewDelegate(new LivingItem(context));
-        addItemViewDelegate(new BangumiRecommendItem(context));
-        addItemViewDelegate(new CommonRecommendItem(context));
-        addItemViewDelegate(new TopicRecommendItem(context));
-        addItemViewDelegate(new ActivityRecommendItem(context));
+        addItemViewDelegate(new RecommendHotItem(context));
+        addItemViewDelegate(new RecommendLivingItem(context));
+        addItemViewDelegate(new RecommendBangumiItem(context));
+        addItemViewDelegate(new RecommendCommonItem(context));
+        addItemViewDelegate(new RecommendTopicItem(context));
+        addItemViewDelegate(new RecommendActivityItem(context));
     }
 }

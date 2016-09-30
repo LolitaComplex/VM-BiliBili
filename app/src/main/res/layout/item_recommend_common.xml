@@ -7,86 +7,87 @@
     >
 
     <LinearLayout
-        android:id="@+id/BangumiRecommendItem_header_ll"
+        android:id="@+id/RecommendCommonItem_header_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         >
 
         <ImageView
-            android:id="@+id/BangumiRecommendItem_header_iv_logo"
+            android:id="@+id/RecommendCommonItem_header_iv_logo"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@mipmap/ic_category_t13"
+            android:src="@mipmap/ic_category_t1"
             />
 
         <TextView
-            android:id="@+id/BangumiRecommendItem_header_tv_title"
+            android:id="@+id/RecommendCommonItem_header_tv_title"
             style="@style/TextStyle_16sp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="@string/bangumi_recommend_title"
+            android:text="@string/animate_recommend_title"
             />
     </LinearLayout>
 
-
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/BangumiRecommendItem_header_more"
-        android:layout_width="50dp"
+        android:id="@+id/RecommendCommonItem_header_more"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/RecommendCommonItem_header_ll"
         android:background="@drawable/selector_text_gray_bg_squarence"
         android:clickable="true"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="5dp"
-        android:text="@string/more"
+        android:text="@string/go_and_see"
         android:textColor="@color/text_white"
         android:textSize="12sp"
         />
 
 
     <com.doing.bilibili.ui.GridViewFactoryView
-        android:id="@+id/BangumiRecommendItem_body_cvf"
+        android:id="@+id/RecommendCommonItem_body_cvf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/BangumiRecommendItem_header_ll"
+        android:layout_below="@id/RecommendCommonItem_header_ll"
         android:layout_marginTop="5dp"
         android:columnCount="2"
         android:rowCount="2"
         />
 
+
+    <Button
+        android:id="@+id/RecommendCommonItem_footer_btn"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RecommendCommonItem_body_cvf"
+        android:layout_marginTop="5dp"
+        android:text="@string/more_animate"
+        />
+
     <LinearLayout
-        android:id="@+id/BangumiRecommendItem_footer"
+        android:id="@+id/RecommendCommonItem_footer_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/BangumiRecommendItem_body_cvf"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/RecommendCommonItem_body_cvf"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         >
 
-        <ImageButton
-            android:id="@+id/BangumiRecommendItem_footer_btn_timeline"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/item_touch_have_bg"
-            android:background="@drawable/layer_bagumi_recommend_timeline"
+        <TextView
+            android:id="@+id/RecommendCommonItem_footer_tv"
+            style="@style/TextStyle_12sp"
+            android:text="@string/playing_live_click_refresh"
             />
 
-        <ImageButton
-            android:id="@+id/BangumiRecommendItem_footer_btn_index"
-            android:layout_width="0dp"
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/RecommendCommonItem_refresh_iv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_weight="1"
-            android:src="@drawable/item_touch_have_bg"
-            android:background="@drawable/layer_bagumi_recommend_index"
             />
-
     </LinearLayout>
 </RelativeLayout>

@@ -123,10 +123,14 @@ public class UIUtils {
         Integer color;
         String text;
 
-        public ColorText(Integer color, String text) {
+        private ColorText(Integer color, String text) {
             super();
             this.color = color;
             this.text = text;
+        }
+
+        public static ColorText holder(Integer color, String text) {
+            return new ColorText(color, text);
         }
     }
 

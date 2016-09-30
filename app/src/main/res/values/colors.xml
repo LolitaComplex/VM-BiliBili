@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FA7198</color>
-    <color name="colorPrimary_dark">#96435B</color>
+    <color name="colorPrimary">#F44236</color>
+    <color name="colorPrimary_dark">#a71d13</color>
     <color name="colorPrimaryDark">@color/colorPrimary</color>
     <color name="colorAccent">#FF4081</color>
 
@@ -28,4 +28,7 @@
 
     <drawable name="colorPrimary">#FA7198</drawable>
     <drawable name="colorPrimary_dark">#96435B</drawable>
+
+    <!--<color name="colorPrimary">#FA7198</color>-->
+    <!--<color name="colorPrimary_dark">#96435B</color>-->
 </resources>

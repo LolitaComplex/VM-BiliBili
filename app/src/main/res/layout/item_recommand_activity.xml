@@ -6,7 +6,7 @@
     >
 
     <LinearLayout
-        android:id="@+id/ActivityRecommend_header_ll"
+        android:id="@+id/RecommendActivityItem_header_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -15,14 +15,14 @@
         >
 
         <ImageView
-            android:id="@+id/ActivityRecommend_header_iv_logo"
+            android:id="@+id/RecommendActivityItem_header_iv_logo"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_header_activity_center"
             />
 
         <TextView
-            android:id="@+id/ActivityRecommend_header_tv_title"
+            android:id="@+id/RecommendActivityItem_header_tv_title"
             style="@style/TextStyle_16sp"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -31,11 +31,11 @@
     </LinearLayout>
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/ActivityRecommend_header_more"
+        android:id="@+id/RecommendActivityItem_header_more"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/ActivityRecommend_header_ll"
+        android:layout_alignTop="@id/RecommendActivityItem_header_ll"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/selector_text_gray_bg_squarence"
@@ -50,10 +50,10 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/ActivityRecommend_body_recycl"
+        android:id="@+id/RecommendActivityItem_body_recycl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ActivityRecommend_header_ll"
+        android:layout_below="@id/RecommendActivityItem_header_ll"
         android:layout_marginTop="5dp"
         />
 

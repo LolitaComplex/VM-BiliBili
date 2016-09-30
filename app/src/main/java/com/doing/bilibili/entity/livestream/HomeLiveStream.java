@@ -755,7 +755,21 @@ public class HomeLiveStream {
                 dest.writeString(this.title);
             }
 
-            public LivesBean() {
+            public LivesBean(BannerDataBean dataBean) {
+                if (this.cover == null) {
+                    this.cover = new CoverBean();
+                }
+
+                if (this.owner == null) {
+                    this.owner = new OwnerBean();
+                }
+
+                this.cover.setSrc(dataBean.getCover().getSrc());
+                this.title = dataBean.getTitle();
+                this.area = dataBean.getArea();
+                this.online = dataBean.getOnline();
+                this.owner.setName(dataBean.getOwner().getName());
+
             }
 
             protected LivesBean(Parcel in) {

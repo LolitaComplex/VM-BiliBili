@@ -40,8 +40,7 @@ public class RecommendFragment extends HomeRecyclerFragment<HomeRecommend> {
             imageUrlList.add(bannerRecommand.getImage());
         }
 
-        mBanner = initBanner(imageUrlList);
-        wrapperAdapter.addHeaderView(mBanner);
+        wrapperAdapter.addHeaderView(initBanner(imageUrlList));
         //配置RecyclerView
         mRecyclerView.setAdapter(wrapperAdapter);
 
