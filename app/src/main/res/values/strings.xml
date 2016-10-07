@@ -110,6 +110,8 @@
     <string name="living_center">直播中心</string>
     <string name="living_search">搜索直播</string>
     <string name="all_partion">全部分类</string>
+    <string name="toolbar_spinner">按标题</string>
+    <string name="setting_offline">离线设置</string>
 
 
 </resources>

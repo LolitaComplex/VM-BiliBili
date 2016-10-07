@@ -5,6 +5,7 @@ import android.view.ViewGroup.LayoutParams;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.adapter.HomeBangumiAdapter;
+import com.doing.bilibili.adapter.RotateAnimatorAdapter;
 import com.doing.bilibili.baselib.adapter.recyclerview.HeaderAndFooterWrapper;
 import com.doing.bilibili.baselib.adapter.recyclerview.LoadMoreWrapper;
 import com.doing.bilibili.baselib.base.BaseFragment;
@@ -53,7 +54,9 @@ public class BangumiFragment extends HomeRecyclerFragment<HomeRealBangumi> imple
 
         HomeBangumiAdapter adapter = new HomeBangumiAdapter(mContext, data.getData());
 
-        HeaderAndFooterWrapper adapterWrapper = new HeaderAndFooterWrapper(adapter);
+        RotateAnimatorAdapter animatorAdapter = new RotateAnimatorAdapter(adapter);
+
+        HeaderAndFooterWrapper adapterWrapper = new HeaderAndFooterWrapper(animatorAdapter);
 
         List<String> imageList = new ArrayList<>();
         for (BangumiBannerBean.HeadBean head : data.getAd().getHead()) {

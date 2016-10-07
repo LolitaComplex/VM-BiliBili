@@ -23,15 +23,105 @@
             app:navigationContentDescription="0dp"
             >
 
-            <Spinner
-                android:id="@+id/AppCacheActivity_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                />
+                <TextView
+                    android:id="@+id/AppCacheActivity_tv_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_spinner_toolbar"
+                    android:drawablePadding="10dp"
+                    android:text="@string/toolbar_spinner"
+                    android:textColor="@color/white"
+                    />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/img_tips_error_no_downloads"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <android.support.v4.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+
+
+                    </LinearLayout>
+
+                </android.support.v4.widget.NestedScrollView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@color/colorPrimary"
+                    />
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:divider="@drawable/line"
+                        app:showDividers="middle"
+                        >
+
+                        <TextView
+                            android:id="@+id/AppCacheActivity_tv_all_start"
+                            style="@style/TextStyle_18sp"
+                            android:text="全部开始"
+                            android:padding="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/AppCacheActivity_tv_edit"
+                            style="@style/TextStyle_18sp"
+                            android:text="编辑"
+                            android:padding="10dp"
+                            />
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <ImageView
+                        android:id="@+id/AppCacheActivity_iv_refresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_action_download_refresh"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_marginEnd="10dp"
+                        />
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+
+
+        </FrameLayout>
 
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.adapter.HomeLiveStreamAdapter;
+import com.doing.bilibili.adapter.RotateAnimatorAdapter;
 import com.doing.bilibili.baselib.adapter.recyclerview.HeaderAndFooterWrapper;
 import com.doing.bilibili.baselib.base.BaseFragment;
 import com.doing.bilibili.baselib.entity.Response;
@@ -55,7 +56,9 @@ public class LiveStreamFragment extends HomeRecyclerFragment<HomeLiveStream> imp
 
         HomeLiveStreamAdapter adapter = new HomeLiveStreamAdapter(mContext, data.getPartitions());
 
-        HeaderAndFooterWrapper wrapperAdapter = new HeaderAndFooterWrapper(adapter);
+        RotateAnimatorAdapter animatorAdapter = new RotateAnimatorAdapter(adapter);
+
+        HeaderAndFooterWrapper wrapperAdapter = new HeaderAndFooterWrapper(animatorAdapter);
 
         List<String> imageUrlList = new ArrayList<>();
         for (HomeLiveStream.BannerBean bannerBean : data.getBanner()) {

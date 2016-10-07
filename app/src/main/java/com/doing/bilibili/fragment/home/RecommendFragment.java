@@ -1,6 +1,7 @@
 package com.doing.bilibili.fragment.home;
 
 import com.doing.bilibili.adapter.HomeRecommendAdapter;
+import com.doing.bilibili.adapter.RotateAnimatorAdapter;
 import com.doing.bilibili.baselib.adapter.recyclerview.HeaderAndFooterWrapper;
 import com.doing.bilibili.baselib.base.BaseFragment;
 import com.doing.bilibili.baselib.entity.Response;
@@ -15,6 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import rx.Observable;
 import rx.functions.Func2;
 import rx.subjects.Subject;
@@ -33,8 +35,9 @@ public class RecommendFragment extends HomeRecyclerFragment<HomeRecommend> {
     public void initViewWithData(HomeRecommend data) {
         HomeRecommendAdapter adapter = new HomeRecommendAdapter(getContext(), data.getRecommends());
 
+        RotateAnimatorAdapter animatorAdapter = new RotateAnimatorAdapter(adapter);
         //添加头部Banner
-        HeaderAndFooterWrapper wrapperAdapter = new HeaderAndFooterWrapper(adapter);
+        HeaderAndFooterWrapper wrapperAdapter = new HeaderAndFooterWrapper(animatorAdapter);
         List<String> imageUrlList = new ArrayList<>();
         for (BannerRecommand bannerRecommand :data.getBanners()) {
             imageUrlList.add(bannerRecommand.getImage());
@@ -42,6 +45,7 @@ public class RecommendFragment extends HomeRecyclerFragment<HomeRecommend> {
 
         wrapperAdapter.addHeaderView(initBanner(imageUrlList));
         //配置RecyclerView
+
         mRecyclerView.setAdapter(wrapperAdapter);
 
         super.initViewWithData(data);

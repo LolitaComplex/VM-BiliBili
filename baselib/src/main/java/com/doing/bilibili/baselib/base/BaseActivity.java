@@ -50,6 +50,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         initView(savedInstanceState);
         initActionBar();
 
+
         subscirp();
     }
 

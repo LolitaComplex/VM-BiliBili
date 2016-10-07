@@ -108,8 +108,16 @@ public class GridViewFactoryView extends GridLayout {
             }
 
             int marginPx = dip2px(6);
-            params.setMargins(marginPx, marginPx, marginPx, marginPx);
-            int contentViewWidth = mWindowmetrics.widthPixels - dip2px(44);
+
+            if (i % getColumnCount() == 0) {
+                params.setMargins(0, marginPx, marginPx, marginPx);
+            } else if (i % getColumnCount() == getColumnCount() - 1) {
+                params.setMargins(marginPx, marginPx, 0, marginPx);
+            } else {
+                params.setMargins(marginPx, marginPx, marginPx, marginPx);
+            }
+
+            int contentViewWidth = mWindowmetrics.widthPixels - dip2px(32);
             params.width = size == 1 && mCardViewCount != 1 ? contentViewWidth / getColumnCount() : ViewGroup.LayoutParams.MATCH_PARENT;
             params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
 

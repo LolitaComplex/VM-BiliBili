@@ -1,5 +1,6 @@
 package com.doing.bilibili.fragment.general;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
@@ -32,7 +33,7 @@ public class LoginFragment extends BaseStaticFragment {
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginActivity.newInstance(mContext);
+                LoginActivity.newInstance((Activity) mContext);
             }
         });
     }

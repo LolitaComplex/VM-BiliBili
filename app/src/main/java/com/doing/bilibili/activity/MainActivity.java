@@ -1,17 +1,28 @@
 package com.doing.bilibili.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.provider.Contacts;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v4.util.Pair;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -28,6 +39,8 @@ import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.global.User;
 import com.doing.bilibili.fragment.factory.NavigationFragmentFactory;
+import com.doing.bilibili.uitls.TransitionHelper;
+
 import static com.doing.bilibili.fragment.factory.NavigationFragmentFactory.createFragment;
 
 import butterknife.BindView;
@@ -49,6 +62,10 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
     protected TabLayout mTabLayout;
 
     private BaseViewHolder mNvHeaderHolder;
+
+    public static void newInstance(Activity context) {
+        context.startActivity(new Intent(context, MainActivity.class));
+    }
 
     @Override
     protected int getLayoutId() {
@@ -84,40 +101,32 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.NavigationHeader_ll_user:
-                action(new Action0() {
-                    @Override
-                    public void call() {
+    protected void initActionBar() {
+        setSupportActionBar(mToolbar);
+        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+        params.topMargin = UIUtils.getStatusBarHeight();
+        mToolbar.setLayoutParams(params);
 
-                    }
-                });
-                break;
-
-            case R.id.NavigationHeader_iv_message:
-                ToastUtil.show("登录后，信息可以查看了");
-
-                break;
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar!=null) {
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
         }
+
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.app_name, R.string.app_name);
+        mDrawerToggle.syncState();
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
+
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        if (v.getId() == R.id.NavigationHeader_iv_bg) {
-            int action = event.getAction();
-            switch (action) {
-                case MotionEvent.ACTION_UP:
-                    ((ImageView)v).setImageResource(R.drawable.ic_drawerbg_not_logined);
-                    break;
+    protected void initWindowAnimations() {
+        Slide slideTransition = new Slide();
+        slideTransition.setDuration(500);
+        slideTransition.setSlideEdge(Gravity.LEFT);
 
-                case MotionEvent.ACTION_DOWN:
-                    ((ImageView)v).setImageResource(R.drawable.ic_drawerbg_logined);
-                    break;
-            }
-        }
-
-        return false;
+        getWindow().setEnterTransition(slideTransition);
     }
 
     private boolean handleNavigationItemSelected(MenuItem item) {
@@ -182,29 +191,6 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
     }
 
     @Override
-    protected void initActionBar() {
-        setSupportActionBar(mToolbar);
-        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
-        params.topMargin = UIUtils.getStatusBarHeight();
-        mToolbar.setLayoutParams(params);
-
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar!=null) {
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
-        }
-
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.app_name, R.string.app_name);
-        mDrawerToggle.syncState();
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
-    }
-
-    public static void newInstance(Context context) {
-        context.startActivity(new Intent(context, MainActivity.class));
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -228,6 +214,44 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.NavigationHeader_ll_user:
+                action(new Action0() {
+                    @Override
+                    public void call() {
+                    }
+                });
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
+                break;
+
+            case R.id.NavigationHeader_iv_message:
+                ToastUtil.show("登录后，信息可以查看了");
+
+                break;
+        }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (v.getId() == R.id.NavigationHeader_iv_bg) {
+            int action = event.getAction();
+            switch (action) {
+                case MotionEvent.ACTION_UP:
+                    ((ImageView)v).setImageResource(R.drawable.ic_drawerbg_not_logined);
+                    break;
+
+                case MotionEvent.ACTION_DOWN:
+                    ((ImageView)v).setImageResource(R.drawable.ic_drawerbg_logined);
+                    break;
+            }
+        }
+
+        return false;
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -267,8 +291,27 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
 
                         mNvHeaderHolder.setOnClickListener(R.id.NavigationHeader_iv_message,
                                 MainActivity.this);
+
+                        Bitmap source = BitmapFactory.decodeResource(getResources(), R.drawable.header_default);
+                        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory
+                                .create(UIUtils.getResources(), source);
+                        roundedBitmapDrawable.setCornerRadius(source.getWidth() / 2);
+                        roundedBitmapDrawable.setAntiAlias(true);
+
+                        mNvHeaderHolder.setImageDrawable(R.id.NavigationHeader_iv_header,
+                                roundedBitmapDrawable);
+
                     }
                 });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mNavigationView != null) {
+            mNavigationView.setCheckedItem(R.id.NavigationMenu_home);
+        }
     }
 
     //================= 接口回调的方法 =======================

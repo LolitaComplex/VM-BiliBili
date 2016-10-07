@@ -52,6 +52,14 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextStyle_17sp" parent="TextStyle_default">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextStyle_18sp" parent="TextStyle_default">
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="TextStyle_default" parent="Wrap_Content">
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/black</item>

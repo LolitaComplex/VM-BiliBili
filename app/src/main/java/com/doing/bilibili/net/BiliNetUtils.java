@@ -39,8 +39,10 @@ public class BiliNetUtils {
         }
 
         public static class Value{
-            public static final String APP_KEY = "85eb6835b0a1034e";
-            public static final String APP_SECRET_KEY = "2ad42749773c441109bdc0191257a664";
+            public static final String APP_KEY = "c1b107428d337928";
+//            public static final String APP_KEY = "85eb6835b0a1034e";
+            public static final String APP_SECRET_KEY = "ea85624dfcf12d7cc7b2b3a94fac1f2c";
+//            public static final String APP_SECRET_KEY = "2ad42749773c441109bdc0191257a664";
             public static final String BUILD = "426003";
             public static final String CHANNEL = "wandoujia";
             public static final String MOBI_APP = "android";

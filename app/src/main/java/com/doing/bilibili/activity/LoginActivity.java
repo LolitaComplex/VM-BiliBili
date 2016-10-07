@@ -1,15 +1,21 @@
 package com.doing.bilibili.activity;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -20,11 +26,12 @@ import android.widget.TextView;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.base.Altar;
+import com.doing.bilibili.base.AppBaseActivity;
 import com.doing.bilibili.base.RxBus;
-import com.doing.bilibili.baselib.base.BaseActivity;
 import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.global.User;
+import com.doing.bilibili.uitls.TransitionHelper;
 
 import butterknife.BindView;
 
@@ -32,7 +39,7 @@ import butterknife.BindView;
  * Created by Doing on 2016/9/26.
  *
  */
-public class LoginActivity extends BaseActivity implements View.OnFocusChangeListener, View.OnClickListener, View.OnTouchListener, TextWatcher {
+public class LoginActivity extends AppBaseActivity implements View.OnFocusChangeListener, View.OnClickListener, View.OnTouchListener, TextWatcher {
 
     @BindView(R.id.General_toolbar)
     protected Toolbar mToolbar;
@@ -47,8 +54,11 @@ public class LoginActivity extends BaseActivity implements View.OnFocusChangeLis
     @BindView(R.id.LoginActivity_btn_login)
     protected Button mBtnLogin;
 
-    public static void newInstance(Context context) {
-        context.startActivity(new Intent(context, LoginActivity.class));
+    public static void newInstance(Activity context) {
+        Pair[] pairs = TransitionHelper.createSafeTrianstionParticipants(context, true);
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(context, pairs);
+
+        context.startActivity(new Intent(context, LoginActivity.class), activityOptionsCompat.toBundle());
     }
 
     @Override
@@ -72,6 +82,52 @@ public class LoginActivity extends BaseActivity implements View.OnFocusChangeLis
         mTvPassword.addTextChangedListener(this);
 
         mBtnLogin.setClickable(false);
+    }
+
+    @Override
+    protected void initActionBar() {
+        setSupportActionBar(mToolbar);
+        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+        params.topMargin = UIUtils.getStatusBarHeight();
+        mToolbar.setLayoutParams(params);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
+    }
+
+    @Override
+    protected void initWindowAnimations() {
+        Explode explodeTransition = new Explode();
+        explodeTransition.setDuration(500);
+        getWindow().setEnterTransition(explodeTransition);
+
+        Fade fadeTransition = new Fade();
+        fadeTransition.setDuration(500);
+        getWindow().setReturnTransition(fadeTransition);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_login, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.action_forget:
+                ToastUtil.show("忘记密码");
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -156,41 +212,4 @@ public class LoginActivity extends BaseActivity implements View.OnFocusChangeLis
         tvDefault.setCompoundDrawablesWithIntrinsicBounds(UIUtils.getDrawable(defaultDrawableId), null, null, null);
     }
 
-    @Override
-    protected void initActionBar() {
-        setSupportActionBar(mToolbar);
-        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
-        params.topMargin = UIUtils.getStatusBarHeight();
-        mToolbar.setLayoutParams(params);
-
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setHomeButtonEnabled(true);
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_login, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.action_forget:
-                ToastUtil.show("忘记密码");
-                break;
-            case android.R.id.home:
-                finish();
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -1,9 +1,8 @@
 package com.doing.bilibili.fragment.home;
 
 import android.graphics.Rect;
-import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
-import android.view.LayoutInflater;
+import android.transition.TransitionManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,7 +26,6 @@ import org.apmem.tools.layouts.FlowLayout;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -35,6 +33,7 @@ import rx.schedulers.Schedulers;
 
 /**
  * Created by Doing on 2016/9/6.
+ *
  */
 public class DiscoverFragment extends BaseStaticFragment implements View.OnClickListener {
 
@@ -70,6 +69,8 @@ public class DiscoverFragment extends BaseStaticFragment implements View.OnClick
     protected TextView mTvAllRank;
     @BindView(R.id.DiscoverFragment_tv_game_center)
     protected TextView mTvGameCenter;
+    @BindView(R.id.DiscoverFragment_root)
+    protected ViewGroup rootView;
 
 
     private boolean mFlowLayoutSwitch = false;
@@ -215,20 +216,54 @@ public class DiscoverFragment extends BaseStaticFragment implements View.OnClick
                 if (mFlowLayoutSwitch) {
                     UIUtils.setTouchListener(mFlowSrollView, true);
                     mTvControl.setText(getString(R.string.see_more));
-                    mFlowLayoutSwitch = false;
                     mFlowSrollView.smoothScrollTo(0, 0);
-                    mAnimationUtils.setCloseAnimator(mFlowSrollView, 500, closeHeight, openHeight);
+                    switchFlowLayout();
+//                    mAnimationUtils.setCloseAnimator(mFlowSrollView, 500, closeHeight, openHeight);
                     mAnimationUtils.setRotateAnimator(mIvArrow, 500, 180, 360);
                 } else {
                     UIUtils.setTouchListener(mFlowSrollView, false);
                     mTvControl.setText(getString(R.string.close_flow_tag));
-                    mFlowLayoutSwitch = true;
-                    mAnimationUtils.setOpenAnimator(mFlowSrollView, 500, closeHeight, openHeight);
+//                    mAnimationUtils.setOpenAnimator(mFlowSrollView, 500, closeHeight, openHeight);
                     mAnimationUtils.setRotateAnimator(mIvArrow, 500, 0, 180);
+                    switchFlowLayout();
                 }
 
                 break;
 
         }
     }
+
+    private boolean flowLayoutSizeChangeed;
+
+    private void switchFlowLayout() {
+        TransitionManager.beginDelayedTransition(rootView);
+
+        ViewGroup.LayoutParams layoutParams = mFlowSrollView.getLayoutParams();
+        if (mFlowLayoutSwitch) {
+            int closeHeight = DensityUitls.dip2px(75);
+            layoutParams.height = closeHeight;
+        } else {
+            int openHeight = DensityUitls.dip2px(200);
+            layoutParams.height = openHeight;
+        }
+
+        mFlowLayoutSwitch = !mFlowLayoutSwitch;
+
+        mFlowSrollView.setLayoutParams(layoutParams);
+    }
+
+//    private boolean arrowRotateChangeed;
+
+
+//    private void switchArrow() {
+//        TransitionManager.beginDelayedTransition(rootView);
+//
+//        if (arrowRotateChangeed) {
+//            mIvArrow.setRotation(360);
+//        } else {
+//            mIvArrow.setRotation(180);
+//        }
+//
+//        arrowRotateChangeed = !arrowRotateChangeed;
+//    }
 }
