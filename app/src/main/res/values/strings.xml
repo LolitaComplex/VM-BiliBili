@@ -74,7 +74,7 @@
     <string name="game_center">游戏</string>
     <string name="action_download">下载</string>
     <string name="action_search">查询</string>
-    <string name="hot_recommend_title">热门推荐</string>
+    <string name="hot_recommend_title">正在直播</string>
     <string name="hot_recommend_rank">排行榜</string>
     <string name="hot_recommend_changitem">换一拨推荐</string>
     <string name="playing_live">正在直播</string>

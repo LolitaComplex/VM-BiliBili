@@ -103,6 +103,13 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public BaseViewHolder setImageUrl(int viewId, String url, int resizeWidth, int resizeHeight) {
+        ImageView imageView = getView(viewId);
+        Picasso.with(mContext).load(url).resize(resizeWidth, resizeHeight).centerCrop().into(imageView);
+        //TODO
+        return this;
+    }
+
     public BaseViewHolder setVisible(int viewId, boolean boo) {
         View view = getView(viewId);
         if (boo) {

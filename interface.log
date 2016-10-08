@@ -23,6 +23,20 @@ live.bilibili.com/AppIndex/home?_device=android&_hwid=51e96f5f2f54d5f9&_ulv=1000
 
 
 
+======Detail======
+
+api.bilibili.com/x/v2/reply?_device=android&_hwid=9ec238cf481b1087&_ulv=10000&access_key=e432917206940f2cbca17c2bd63cbce9&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&oid=6561508&platform=android&pn=1&ps=20&sort=0&type=1&sign=a21da7b403146bd780a1586382de6014
+
+elec.bilibili.com/api/elec.list.do?act=appkey&appkey=1d8b6e7d45233436&build=427000&goods_id=1&mobi_app=android&platform=android&ts=1475892334000&sign=82d0861910ad3487ba9334f2f3e2f16f
+
+message.bilibili.com/api/notify/query.notify.count.do?access_key=e432917206940f2cbca17c2bd63cbce9&actionKey=appkey&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1475892468000&sign=6adb2aa91e93988bf60e0a58768a9e7a
+
+comment.bilibili.com/10588947.xml
+
+//加载更多评论
+api.bilibili.com/x/v2/reply?_device=android&_hwid=9ec238cf481b1087&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&oid=6509644&platform=android&pn=2&ps=20&sort=0&type=1&sign=ae8e0a3d30c7d912b1aac0156193e119
+
+api.bilibili.com/x/v2/reply?_device=android&_hwid=9ec238cf481b1087&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&oid=6509644&platform=android&pn=1&ps=20&sort=0&type=1&sign=7949bb7cd12987674000111830125fef
 
 
 

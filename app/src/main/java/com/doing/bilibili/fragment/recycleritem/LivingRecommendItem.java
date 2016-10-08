@@ -16,6 +16,8 @@ import com.doing.bilibili.entity.livestream.HomeLiveStream.LiveStream.BannerData
 import com.doing.bilibili.entity.livestream.HomeLiveStream.LiveStream.LivesBean;
 import com.doing.bilibili.ui.GridViewFactoryView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -58,13 +60,14 @@ public class LivingRecommendItem extends ItemViewDelegateImp<HomeLiveStream.Live
         GridViewFactoryView gridViewFactoryDown = holder.getView(R.id.LivingRecommendItem_body2_cvf);
 
 
-        List<LivesBean> listUp = data.getLives().subList(0, 6);
+        List<LivesBean> listUp = new ArrayList<>(data.getLives());
         BannerDataBean dataItem = data.getBanner_data().get(0);
-        listUp.add(listUp.size(), new LivesBean(dataItem));
+        listUp.add(6, new LivesBean(dataItem));
 
-        List<LivesBean> lissDown = data.getLives().subList(7, data.getLives().size());
+
+        List<LivesBean> listDown = data.getLives().subList(5, data.getLives().size());
         gridViewFactoryUp.setAdapter(new CardViewLivingAdapter(mContext, R.layout.layout_cardview_living, listUp, true));
-        gridViewFactoryDown.setAdapter(new CardViewLivingAdapter(mContext, R.layout.layout_cardview_living, lissDown, true));
+        gridViewFactoryDown.setAdapter(new CardViewLivingAdapter(mContext, R.layout.layout_cardview_living, listDown, true));
 
         holder.setOnClickListener(R.id.LivingRecommendItem_footer_btn, this);
     }

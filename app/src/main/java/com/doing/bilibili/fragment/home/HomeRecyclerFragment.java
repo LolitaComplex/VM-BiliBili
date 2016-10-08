@@ -1,27 +1,17 @@
 package com.doing.bilibili.fragment.home;
 
-import android.animation.TimeInterpolator;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.AutoTransition;
-import android.transition.Explode;
-import android.transition.Slide;
 import android.transition.TransitionManager;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.baselib.base.BaseLoadingFragment;
 import com.doing.bilibili.baselib.utils.DensityUitls;
-import com.doing.bilibili.baselib.utils.LogUtils;
-import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -70,20 +60,22 @@ public abstract class HomeRecyclerFragment<T> extends BaseLoadingFragment<T> {
     }
 
     protected void initTransition() {
-        rootView.post(new Runnable() {
-            @Override
-            public void run() {
-                AutoTransition transition = new AutoTransition();
-                transition.setDuration(300);
-                transition.setInterpolator(new DecelerateInterpolator());
-                TransitionManager.beginDelayedTransition(rootView, transition);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            rootView.post(new Runnable() {
+                @Override
+                public void run() {
+                    AutoTransition transition = new AutoTransition();
+                    transition.setDuration(300);
+                    transition.setInterpolator(new DecelerateInterpolator());
+                    TransitionManager.beginDelayedTransition(rootView, transition);
 
-                ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) mSwipeRefreshLayout.getLayoutParams();
-                layoutParams.topMargin = 0;
-                mSwipeRefreshLayout.setLayoutParams(layoutParams);
-            }
-        });
+                    ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) mSwipeRefreshLayout.getLayoutParams();
+                    layoutParams.topMargin = 0;
+                    mSwipeRefreshLayout.setLayoutParams(layoutParams);
+                }
 
+            });
+        }
     }
 
     protected Banner initBanner(List<String> imageUrlList) {
@@ -131,7 +123,7 @@ public abstract class HomeRecyclerFragment<T> extends BaseLoadingFragment<T> {
 
         if (boo) {
             mBanner.isAutoPlay(true);
-        }else {
+        } else {
             mBanner.isAutoPlay(false);
         }
     }

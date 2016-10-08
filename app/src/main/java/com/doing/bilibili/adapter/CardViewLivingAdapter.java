@@ -36,8 +36,13 @@ public class CardViewLivingAdapter extends CommonAdapter<LivesBean> {
         }
 
         holder.setText(R.id.CardViewItem_tv_playing, data.getOwner().getName())
-                .setText(R.id.CardViewItem_tv_leave_mes, data.getOnline() + "")
-                .setImageUrl(R.id.CardViewItem_iv_title, data.getCover().getSrc());
+                .setText(R.id.CardViewItem_tv_leave_mes, data.getOnline() + "");
+
+        if (positon == 6) {
+            holder.setImageUrl(R.id.CardViewItem_iv_title, data.getCover().getSrc());
+        } else {
+            holder.setImageUrl(R.id.CardViewItem_iv_title, data.getCover().getSrc(), 660, 360);
+        }
     }
 
 }

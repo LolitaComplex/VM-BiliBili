@@ -33,7 +33,7 @@ public class CardViewRecommandAdapter extends CommonAdapter<Recommend.BodyBean> 
         }
 
         holder.setText(R.id.CardViewItem_tv_title, bodyBean.getTitle())
-                .setImageUrl(R.id.CardViewItem_iv_title, bodyBean.getCover())
+                .setImageUrl(R.id.CardViewItem_iv_title, bodyBean.getCover(), 660, 360)
                 .setText(R.id.CardViewItem_tv_playing, footerText1)
                 .setText(R.id.CardViewItem_tv_leave_mes, footerText2);
     }
