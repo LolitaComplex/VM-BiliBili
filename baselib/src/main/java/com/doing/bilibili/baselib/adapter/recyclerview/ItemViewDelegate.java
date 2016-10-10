@@ -14,4 +14,6 @@ public interface ItemViewDelegate<T> {
     boolean isForViewType(T item, int position);
 
     void convert(BaseViewHolder holder, T t, int position);
+
+    boolean isEnable();
 }

@@ -61,10 +61,7 @@ public class AppCacheActivity extends AppBaseActivity implements View.OnClickLis
 
     @Override
     protected void initActionBar() {
-        setSupportActionBar(mToolbar);
-        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
-        params.topMargin = UIUtils.getStatusBarHeight();
-        mToolbar.setLayoutParams(params);
+        super.initActionBar();
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

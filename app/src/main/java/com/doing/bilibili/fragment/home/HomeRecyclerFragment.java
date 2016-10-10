@@ -57,6 +57,22 @@ public abstract class HomeRecyclerFragment<T> extends BaseLoadingFragment<T> {
         mRecyclerView.setItemAnimator(new FadeInAnimator());
 
         initTransition();
+
+        /*
+        据说是常用API 记一下咯 >_<!!!...
+        mRecyclerView.scrollTo(100,0);
+        mRecyclerView.scrollToPosition(1);
+        mRecyclerView.smoothScrollToPosition(1);
+        mRecyclerView.smoothScrollBy(100, 0);
+        mRecyclerView.findViewHolderForPosition(1);
+        mRecyclerView.findViewHolderForAdapterPosition(0);
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+        */
     }
 
     protected void initTransition() {

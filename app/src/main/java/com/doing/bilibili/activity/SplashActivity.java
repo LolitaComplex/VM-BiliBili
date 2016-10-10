@@ -14,7 +14,7 @@ import java.util.TimerTask;
  * Created by 杜营 on 2016/9/1.
  *
  */
-public class SplashActivity extends AppBaseActivity {
+public class SplashActivity extends BaseActivity {
 
     private Timer mTimer;
 
@@ -40,13 +40,6 @@ public class SplashActivity extends AppBaseActivity {
 
     }
 
-    @Override
-    protected void initWindowAnimations() {
-        Fade fadeTransition = new Fade();
-        fadeTransition.setDuration(500);
-
-        getWindow().setExitTransition(fadeTransition);
-    }
 
     @Override
     protected void onDestroy() {

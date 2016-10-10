@@ -113,7 +113,7 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
     }
 
     protected void setListener(ViewGroup parent, final BaseViewHolder holder, int viewType) {
-        if (isEnable(viewType)) {
+        if (!isEnable(viewType)) {
             return;
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +148,9 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
      * @return
      */
     protected boolean isEnable(int viewType) {
-        return true;
+        ItemViewDelegate<T> itemViewDelegate = mDelegateManager.getItemViewDelegate(viewType);
+        return itemViewDelegate.isEnable();
+//        return true;
     }
 
     public interface OnItemClickLisenter {

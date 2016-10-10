@@ -28,6 +28,7 @@
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.AppCacheActivity"/>
         <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.BiliDetalActivity"/>
     </application>
 
 </manifest>

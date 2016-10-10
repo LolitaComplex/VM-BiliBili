@@ -1,13 +1,17 @@
 package com.doing.bilibili.fragment.recycleritem;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.doing.bilibili.R;
+import com.doing.bilibili.activity.BiliDetalActivity;
 import com.doing.bilibili.adapter.CardViewRecommandAdapter;
 import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
+import com.doing.bilibili.baselib.adapter.recyclerview.MultiItemTypeAdapter;
 import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.recommend.Recommend;
@@ -19,7 +23,7 @@ import static com.doing.bilibili.adapter.HomeRecommendAdapter.HOT_RECOMMEND;
  * Created by Doing on 2016/9/19.
  *
  */
-public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener {
+public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener, MultiItemTypeAdapter.OnItemClickLisenter {
 
     public RecommendHotItem(Context context) {
         super(context);
@@ -48,7 +52,10 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
         holder.setOnClickListener(R.id.RecommendHotItem_header_ll_rank, this);
 
         GridViewFactoryView cardViewFactory = holder.getView(R.id.RecommendHotItem_body_cvf);
-        cardViewFactory.setAdapter(new CardViewRecommandAdapter(mContext, R.layout.layout_cardview_hotrecommend, recommend.getBody()));
+        CardViewRecommandAdapter cardViewAdapter = new CardViewRecommandAdapter(mContext, R.layout.layout_cardview_hotrecommend, recommend.getBody());
+        cardViewAdapter.setEnable(true);
+        cardViewFactory.setAdapter(cardViewAdapter);
+        cardViewAdapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -66,5 +73,15 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
                 ToastUtil.show("Refresh被点击了");
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        BiliDetalActivity.newInstance((Activity) mContext);
+    }
+
+    @Override
+    public void onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+
     }
 }

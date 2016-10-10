@@ -49,9 +49,6 @@ import rx.functions.Action1;
 
 public class MainActivity extends AppBaseActivity implements MainActivityCallback, View.OnClickListener, View.OnTouchListener {
 
-    @BindView(R.id.General_toolbar)
-    protected Toolbar mToolbar;
-
     @BindView(R.id.MainActivity_drawer)
     protected DrawerLayout mDrawerLayout;
 
@@ -102,11 +99,7 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
 
     @Override
     protected void initActionBar() {
-        setSupportActionBar(mToolbar);
-        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
-        params.topMargin = UIUtils.getStatusBarHeight();
-        mToolbar.setLayoutParams(params);
-
+        super.initActionBar();
         ActionBar actionBar = getSupportActionBar();
         if (actionBar!=null) {
             actionBar.setDisplayShowHomeEnabled(true);

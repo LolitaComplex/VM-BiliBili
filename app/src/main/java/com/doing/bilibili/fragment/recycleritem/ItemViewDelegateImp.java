@@ -15,4 +15,9 @@ public abstract class ItemViewDelegateImp<T> implements ItemViewDelegate<T> {
     public ItemViewDelegateImp(Context context) {
         this.mContext = context;
     }
+
+    @Override
+    public boolean isEnable() {
+        return false;
+    }
 }

@@ -144,7 +144,7 @@ public class GridViewFactoryView extends GridLayout {
                 int childCount = contentView.getChildCount();
                 BaseViewHolder holder;
                 if(childCount == 0){
-                    holder = mAdapter.createViewHolder(contentView, mAdapter.getItemViewType(i));
+                    holder = mAdapter.onCreateViewHolder(contentView, mAdapter.getItemViewType(i));
                     contentView.addView(holder.getContentView(), holder.getContentView().getLayoutParams());
                     contentView.setTag(holder);
                 }else{
