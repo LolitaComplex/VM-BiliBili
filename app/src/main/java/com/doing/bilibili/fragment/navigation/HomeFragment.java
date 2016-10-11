@@ -1,20 +1,14 @@
 package com.doing.bilibili.fragment.navigation;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.doing.bilibili.R;
-import com.doing.bilibili.activity.MainActivityCallback;
+import com.doing.bilibili.activity.callback.TabLayoutCallback;
 import com.doing.bilibili.adapter.HomeFragmentPagerAdapter;
 import com.doing.bilibili.baselib.base.BaseFragment;
 import com.doing.bilibili.baselib.base.BaseLoadingFragment;
 import com.doing.bilibili.baselib.base.BaseStaticFragment;
-import com.doing.bilibili.baselib.utils.LogUtils;
-import com.doing.bilibili.baselib.utils.ToastUtil;
-import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.fragment.factory.HomeFragmentFactory;
 import com.doing.bilibili.fragment.home.HomeRecyclerFragment;
 
@@ -50,7 +44,8 @@ public class HomeFragment extends BaseStaticFragment {
 
             @Override
             public void onPageSelected(int position) {
-                BaseFragment fragment = HomeFragmentFactory.createFragment(position);
+                HomeFragmentFactory factory = HomeFragmentFactory.getInstance();
+                BaseFragment fragment = factory.createFragment(position);
                 if (fragment instanceof BaseLoadingFragment) {
                     ((BaseLoadingFragment) fragment).show();
                 }
@@ -73,7 +68,7 @@ public class HomeFragment extends BaseStaticFragment {
                 }
             }
         });
-        ((MainActivityCallback)mContext).initTabLayout(mViewPager);
+        ((TabLayoutCallback)mContext).initTabLayout(mViewPager);
     }
 
     public static BaseFragment newInstance() {

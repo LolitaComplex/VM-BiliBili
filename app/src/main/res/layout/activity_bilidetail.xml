@@ -6,86 +6,98 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/General_appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:theme="@style/AppTheme.AppBarOverlay"
         >
+
         <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/General_collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:contentScrim="?attr/colorPrimary"
-            app:statusBarScrim="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:statusBarScrim="@android:color/transparent"
             >
 
-            <ImageView
-                android:id="@+id/General_toobar_bg"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/header_default"
-                app:layout_collapseMode="parallax"
-                />
+                android:layout_height="210dp"
+
+                >
+
+                <ImageView
+                    android:id="@+id/General_toobar_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/header_default"
+                    app:layout_collapseMode="parallax"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_gradient_black"
+                    />
+
+            </FrameLayout>
+
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/General_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:title="av6666666"
                 app:contentInsetStartWithNavigation="0dp"
+                app:layout_collapseMode="pin"
                 app:navigationContentDescription="0dp"
-                />
+                >
+
+                <com.doing.bilibili.ui.ImageTextView
+                    android:id="@+id/General_tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="2dp"
+                    android:text="av6666666"
+                    android:textColor="@color/text_white"
+                    android:textSize="18sp"
+                    />
+
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 
-        <!--<android.support.design.widget.TabLayout-->
-            <!--android:id="@+id/General_tablayout"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--app:tabSelectedTextColor="@color/white"-->
-            <!--app:tabTextColor="@color/gray"-->
-            <!--app:tabIndicatorColor="@color/white"-->
-            <!--app:tabTextAppearance="@style/TextAppearance.AppCompat.Body1"-->
-            <!--/>-->
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-
-        <TextView
-            android:id="@+id/ToolBarFragment_text"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/General_tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。
-            这是一个令人颓丧的时刻，不过我不能灰心，，不受周围因素的影响，按照自己的路线脚踏实地的前进，不断努力，早一步实现自己所想。"
-            android:textSize="18sp"
+            android:background="@color/white"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextColor="@color/black"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Body1"
             />
-    </android.support.v4.widget.NestedScrollView>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <FrameLayout
+        android:id="@+id/General_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/General_floatactionbution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:src="@drawable/ic_fab_play"
+        app:fabSize="normal"
+        app:layout_anchor="@id/General_collapsingToolbar"
+        app:layout_anchorGravity="bottom|right|end"/>
 
 </android.support.design.widget.CoordinatorLayout>

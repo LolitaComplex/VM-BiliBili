@@ -1,26 +1,19 @@
 package com.doing.bilibili.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.provider.Contacts;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.support.v4.util.Pair;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.view.Gravity;
 import android.view.Menu;
@@ -30,7 +23,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.doing.bilibili.R;
-import com.doing.bilibili.base.Altar;
+import com.doing.bilibili.activity.callback.TabLayoutCallback;
 import com.doing.bilibili.base.AppBaseActivity;
 import com.doing.bilibili.base.RxBus;
 import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
@@ -39,15 +32,13 @@ import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.global.User;
 import com.doing.bilibili.fragment.factory.NavigationFragmentFactory;
-import com.doing.bilibili.uitls.TransitionHelper;
-
-import static com.doing.bilibili.fragment.factory.NavigationFragmentFactory.createFragment;
 
 import butterknife.BindView;
 import rx.functions.Action0;
 import rx.functions.Action1;
 
-public class MainActivity extends AppBaseActivity implements MainActivityCallback, View.OnClickListener, View.OnTouchListener {
+
+public class MainActivity extends AppBaseActivity implements TabLayoutCallback, View.OnClickListener, View.OnTouchListener {
 
     @BindView(R.id.MainActivity_drawer)
     protected DrawerLayout mDrawerLayout;
@@ -59,9 +50,15 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
     protected TabLayout mTabLayout;
 
     private BaseViewHolder mNvHeaderHolder;
+    private NavigationFragmentFactory mFactory;
 
     public static void newInstance(Activity context) {
         context.startActivity(new Intent(context, MainActivity.class));
+    }
+
+    @Override
+    protected void initVariable() {
+        mFactory = NavigationFragmentFactory.getInstance();
     }
 
     @Override
@@ -71,7 +68,7 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        addFragment(R.id.General_content, createFragment(NavigationFragmentFactory.HOME), false);
+        addFragment(R.id.General_content, mFactory.createFragment(NavigationFragmentFactory.HOME), false);
 
 
         initNavigationHeaderView();
@@ -127,7 +124,7 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
         int itemId = item.getItemId();
         switch (itemId) {
             case R.id.NavigationMenu_home:
-                showFragment[0] = createFragment(NavigationFragmentFactory.HOME);
+                showFragment[0] = mFactory.createFragment(NavigationFragmentFactory.HOME);
                 ToastUtil.show("主页");
                 break;
             case R.id.NavigationMenu_download:
@@ -137,19 +134,19 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
                 action(new Action0() {
                     @Override
                     public void call() {
-                        showFragment[0] = createFragment(NavigationFragmentFactory.COLLECTION);
+                        showFragment[0] = mFactory.createFragment(NavigationFragmentFactory.COLLECTION);
                     }
                 });
                 break;
             case R.id.NavigationMenu_history:
-                showFragment[0] = createFragment(NavigationFragmentFactory.HISTORY);
+                showFragment[0] = mFactory.createFragment(NavigationFragmentFactory.HISTORY);
                 ToastUtil.show("历史记录");
                 break;
             case R.id.NavigationMenu_follow:
                 action(new Action0() {
                     @Override
                     public void call() {
-                        showFragment[0] = createFragment(NavigationFragmentFactory.FOLLOW_PEOPLE);
+                        showFragment[0] = mFactory.createFragment(NavigationFragmentFactory.FOLLOW_PEOPLE);
                     }
                 });
                 break;
@@ -157,12 +154,12 @@ public class MainActivity extends AppBaseActivity implements MainActivityCallbac
                 action(new Action0() {
                     @Override
                     public void call() {
-                        showFragment[0] = createFragment(NavigationFragmentFactory.WALLET);
+                        showFragment[0] = mFactory.createFragment(NavigationFragmentFactory.WALLET);
                     }
                 });
                 break;
             case R.id.NavigationMenu_style:
-                showFragment[0] = createFragment(NavigationFragmentFactory.THEME_SELECT);
+                showFragment[0] = mFactory.createFragment(NavigationFragmentFactory.THEME_SELECT);
                 ToastUtil.show("主题选择");
                 break;
             case R.id.NavigationMenu_shop:

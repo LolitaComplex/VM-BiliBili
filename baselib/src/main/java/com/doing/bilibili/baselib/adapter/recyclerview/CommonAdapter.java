@@ -46,7 +46,7 @@ public abstract class CommonAdapter<T> extends MultiItemTypeAdapter<T> {
 
     protected abstract void convert(BaseViewHolder holder, T t, int positon);
 
-    private boolean isEnable() {
+    protected boolean isEnable() {
         return mIsEnable;
     }
 

@@ -21,7 +21,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="@drawable/shape_gradient_black"
+            android:background="@drawable/shape_gradient_black_reverse"
             android:layout_gravity="bottom"
             />
 

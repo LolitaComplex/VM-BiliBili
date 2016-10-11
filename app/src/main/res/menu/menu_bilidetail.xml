@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/BiliDetailActivity_debug"
+        android:title="@string/debug"
+        android:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/BiliDetailActivity_help"
+        android:title="@string/help"
+        android:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/BiliDetailActivity_setting"
+        android:title="@string/setting"
+        android:showAsAction="never"
+        />
+
+</menu>

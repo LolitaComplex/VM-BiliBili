@@ -9,6 +9,11 @@
         <item>发现</item>
     </string-array>
 
+    <string-array name="array_bili_detail_pager_title">
+        <item>简介</item>
+        <item>评论</item>
+    </string-array>
+
     <string-array name="array_home_bangumi_title">
         <item>新番推荐</item>
         <item>国产动画</item>
@@ -54,7 +59,7 @@
 
 
 
-    <string name="app_name">MyBiLiBiLi</string>
+    <string name="app_name">VM-BiliBili</string>
     <string name="action_settings">Settings</string>
     <string name="SplashActivity_copyright">Copyright © 2016-XXXX Doing</string>
     <string name="default_uesrname">嘎哦瞄</string>
@@ -112,6 +117,9 @@
     <string name="all_partion">全部分类</string>
     <string name="toolbar_spinner">按标题</string>
     <string name="setting_offline">离线设置</string>
+    <string name="debug">测试</string>
+    <string name="setting">设置</string>
+    <string name="help">帮助</string>
 
 
 </resources>

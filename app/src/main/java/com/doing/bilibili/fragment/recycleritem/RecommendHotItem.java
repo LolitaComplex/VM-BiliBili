@@ -23,7 +23,7 @@ import static com.doing.bilibili.adapter.HomeRecommendAdapter.HOT_RECOMMEND;
  * Created by Doing on 2016/9/19.
  *
  */
-public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener, MultiItemTypeAdapter.OnItemClickLisenter {
+public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements View.OnClickListener, GridViewFactoryView.OnItemClickListener {
 
     public RecommendHotItem(Context context) {
         super(context);
@@ -52,10 +52,10 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
         holder.setOnClickListener(R.id.RecommendHotItem_header_ll_rank, this);
 
         GridViewFactoryView cardViewFactory = holder.getView(R.id.RecommendHotItem_body_cvf);
-        CardViewRecommandAdapter cardViewAdapter = new CardViewRecommandAdapter(mContext, R.layout.layout_cardview_hotrecommend, recommend.getBody());
-        cardViewAdapter.setEnable(true);
+        CardViewRecommandAdapter cardViewAdapter = new CardViewRecommandAdapter(
+                mContext, R.layout.layout_cardview_hotrecommend, recommend.getBody());
         cardViewFactory.setAdapter(cardViewAdapter);
-        cardViewAdapter.setOnItemClickListener(this);
+        cardViewFactory.setOnItemClickListener(this);
     }
 
     @Override
@@ -76,12 +76,12 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
     }
 
     @Override
-    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+    public void onItemClick(View view, int postion) {
         BiliDetalActivity.newInstance((Activity) mContext);
     }
 
     @Override
-    public void onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+    public void onItemLongClick(View view, int postion) {
 
     }
 }

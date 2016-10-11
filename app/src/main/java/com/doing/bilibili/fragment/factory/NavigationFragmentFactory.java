@@ -1,5 +1,7 @@
 package com.doing.bilibili.fragment.factory;
 
+import android.support.v4.util.SparseArrayCompat;
+
 import com.doing.bilibili.baselib.base.BaseFragment;
 import com.doing.bilibili.fragment.navigation.CollectionFragment;
 import com.doing.bilibili.fragment.navigation.FollowPeopleFragment;
@@ -24,10 +26,21 @@ public class NavigationFragmentFactory {
     public static final int WALLET = 4;
     public static final int THEME_SELECT = 5;
 
-    private static Map<Integer, BaseFragment> factory = new HashMap<>();
+    private SparseArrayCompat<BaseFragment> factory = new SparseArrayCompat<>();
 
-    public static BaseFragment createFragment(int position) {
-        BaseFragment fragment = factory.get(position);
+    private static NavigationFragmentFactory instance = new NavigationFragmentFactory();
+
+    private NavigationFragmentFactory(){}
+
+    public static NavigationFragmentFactory getInstance() {
+        return instance;
+    }
+
+    public BaseFragment createFragment(int position) {
+        BaseFragment fragment = null;
+        if (factory != null) {
+            fragment = factory.get(position);
+        }
         if (fragment == null) {
             switch (position) {
                 case HOME:
@@ -51,7 +64,7 @@ public class NavigationFragmentFactory {
             }
         }
 
-        if (fragment != null && !factory.containsValue(fragment)) {
+        if (fragment != null && factory.indexOfValue(fragment) == -1) {
             factory.put(position, fragment);
         }
         return fragment;

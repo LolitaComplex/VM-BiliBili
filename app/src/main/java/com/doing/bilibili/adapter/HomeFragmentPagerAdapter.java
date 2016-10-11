@@ -19,15 +19,17 @@ import com.doing.bilibili.fragment.factory.HomeFragmentFactory;
 public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     private final String[] mTitles;
+    private final HomeFragmentFactory mFactory;
 
     public HomeFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
         mTitles = UIUtils.getStringArray(R.array.array_home_pager_title);
+        mFactory = HomeFragmentFactory.getInstance();
     }
 
     @Override
     public BaseFragment getItem(int position) {
-        return HomeFragmentFactory.createFragment(position);
+        return mFactory.createFragment(position);
     }
 
     @Override

@@ -23,11 +23,11 @@ public class CardViewRecommandAdapter extends CommonAdapter<Recommend.BodyBean> 
 
     @Override
     protected void convert(BaseViewHolder holder, Recommend.BodyBean bodyBean, int positon) {
-        String footerText1 = getNotNullText(bodyBean.getPlay(), bodyBean.getUp(),bodyBean.getDesc1());
-        String footerText2 = getNotNullText(bodyBean.getDanmaku(),bodyBean.getOnline() + "");
+        String footerText1 = getNotNullText(bodyBean.getPlay(), bodyBean.getUp(), bodyBean.getDesc1());
+        String footerText2 = getNotNullText(bodyBean.getDanmaku(), bodyBean.getOnline() + "");
 
         //这个时间哪里获取的呢？接口中没有的XD
-        if(!TextUtils.isEmpty(bodyBean.getDesc1())) {
+        if (!TextUtils.isEmpty(bodyBean.getDesc1())) {
             footerText2 = "凌晨1:00";
             footerText1 = footerText1.substring(3);
         }
@@ -40,10 +40,11 @@ public class CardViewRecommandAdapter extends CommonAdapter<Recommend.BodyBean> 
 
     private String getNotNullText(String... text) {
         for (String target : text) {
-            if(!TextUtils.isEmpty(target)) {
+            if (!TextUtils.isEmpty(target)) {
                 return target;
             }
         }
         return "";
     }
+
 }

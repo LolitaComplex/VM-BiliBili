@@ -1,5 +1,6 @@
 package com.doing.bilibili.fragment.factory;
 
+import android.support.v4.util.SparseArrayCompat;
 import android.widget.ScrollView;
 
 import com.doing.bilibili.baselib.base.BaseFragment;
@@ -20,31 +21,48 @@ import java.util.Map;
  */
 public class HomeFragmentFactory {
 
-    private static Map<Integer, BaseFragment> factory = new HashMap<>();
+    public static final int LIVE = 0;
+    public static final int RECOMMEND = 1;
+    public static final int BANGUMI = 2;
+    public static final int PARTITION = 3;
+    public static final int ATTENTION = 4;
+    public static final int DISCOVER = 5;
 
-    public static BaseFragment createFragment(int position) {
+    private static HomeFragmentFactory instance = new HomeFragmentFactory();
 
-        BaseFragment fragment = factory.get(position);
+    private HomeFragmentFactory(){}
+
+    public static HomeFragmentFactory getInstance() {
+        return instance;
+    }
+
+    private SparseArrayCompat<BaseFragment> factory = new SparseArrayCompat<>();
+
+    public BaseFragment createFragment(int position) {
+        BaseFragment fragment = null;
+        if (factory != null) {
+            fragment = factory.get(position);
+        }
 
         if (fragment == null) {
             switch (position) {
-                case 0:
+                case LIVE:
                     fragment = LiveStreamFragment.newInstance();
                     break;
-                case 1:
+                case RECOMMEND:
                     fragment = RecommendFragment.newInstance();
                     break;
-                case 2:
+                case BANGUMI:
                     fragment = BangumiFragment.newInstance();
                     break;
 
-                case 3:
+                case PARTITION:
                     fragment = PartitionFragment.newInstance();
                     break;
-                case 4:
+                case ATTENTION:
                     fragment = new LoginWrapperFragment(AttentionFragment.newInstance());
                     break;
-                case 5:
+                case DISCOVER:
                     fragment = DiscoverFragment.newInstance();
                     break;
                 default:
@@ -52,7 +70,7 @@ public class HomeFragmentFactory {
             }
         }
 
-        if (fragment != null && !factory.containsValue(fragment)) {
+        if (fragment != null && factory.indexOfValue(fragment) == -1) {
             factory.put(position, fragment);
         }
 

@@ -63,4 +63,5 @@ dependencies {
 
     //RecyclerViewItemAnimator
     compile 'jp.wasabeef:recyclerview-animators:2.2.4'
+
 }

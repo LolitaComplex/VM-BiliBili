@@ -3,6 +3,7 @@ package com.doing.bilibili.ui;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -102,7 +103,11 @@ public class GridViewFactoryView extends GridLayout {
                 int[] attrs = new int[]{android.R.attr.selectableItemBackground};
                 TypedArray a = getContext().getTheme().obtainStyledAttributes(attrs);
                 Drawable drawable = a.getDrawable(0);
-                ((CardView) contentView).setForeground(drawable);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ((CardView) contentView).setForeground(drawable);
+                } else {
+                    contentView.setBackgroundResource(R.drawable.item_touch_bg);
+                }
             } else {
                 contentView = new FrameLayout(getContext());
             }
@@ -143,14 +148,22 @@ public class GridViewFactoryView extends GridLayout {
 
                 int childCount = contentView.getChildCount();
                 BaseViewHolder holder;
-                if(childCount == 0){
-                    holder = mAdapter.onCreateViewHolder(contentView, mAdapter.getItemViewType(i));
+                if (childCount == 0) {
+                    if (i > mAdapter.getItemCount() - 1) {
+                        holder = mAdapter.onCreateViewHolder(contentView, mAdapter.getItemViewType(mAdapter.getItemCount() - 1));
+                    } else {
+                        holder = mAdapter.onCreateViewHolder(contentView, mAdapter.getItemViewType(i));
+                    }
                     contentView.addView(holder.getContentView(), holder.getContentView().getLayoutParams());
                     contentView.setTag(holder);
-                }else{
+                } else {
                     holder = (BaseViewHolder) contentView.getTag();
                 }
-                mAdapter.onBindViewHolder(holder, i);
+                if (i > mAdapter.getItemCount() - 1) {
+                    mAdapter.onBindViewHolder(holder,mAdapter.getItemCount() - 1);
+                }else {
+                    mAdapter.onBindViewHolder(holder, i);
+                }
             }
         }
     }
@@ -233,4 +246,5 @@ public class GridViewFactoryView extends GridLayout {
         final float scale = getContext().getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
+
 }
