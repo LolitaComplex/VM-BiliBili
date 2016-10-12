@@ -14,6 +14,7 @@ import com.doing.bilibili.adapter.BiliDetailHomeFragmentPagerAdapter;
 import com.doing.bilibili.baselib.base.BaseFragment;
 import com.doing.bilibili.baselib.base.BaseLoadingFragment;
 import com.doing.bilibili.baselib.base.BaseStaticFragment;
+import com.doing.bilibili.entity.argument.DetailData;
 import com.doing.bilibili.fragment.factory.BiliDetailFragmentFactory;
 import com.doing.bilibili.fragment.navigation.HomeFragment;
 
@@ -30,8 +31,13 @@ public class BiliDetailHomeFragment extends BaseStaticFragment {
     @BindView(R.id.BiliDetailHomeFragment_viewpager)
     protected ViewPager mViewPager;
 
-    public static BiliDetailHomeFragment newInstance() {
-        return new BiliDetailHomeFragment();
+    public static BiliDetailHomeFragment newInstance(DetailData detailData) {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(BiliDetalActivity.DETAIL_DATA, detailData);
+
+        BiliDetailHomeFragment fragment = new BiliDetailHomeFragment();
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
@@ -41,8 +47,10 @@ public class BiliDetailHomeFragment extends BaseStaticFragment {
 
     @Override
     protected void initView() {
+        DetailData detailData = getArguments().getParcelable(BiliDetalActivity.DETAIL_DATA);
+
         FragmentStatePagerAdapter adapter =
-                new BiliDetailHomeFragmentPagerAdapter(getChildFragmentManager());
+                new BiliDetailHomeFragmentPagerAdapter(getChildFragmentManager(),detailData);
 
         mViewPager.setAdapter(adapter);
 

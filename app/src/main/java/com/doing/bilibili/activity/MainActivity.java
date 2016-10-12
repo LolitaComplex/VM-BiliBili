@@ -109,16 +109,6 @@ public class MainActivity extends AppBaseActivity implements TabLayoutCallback, 
         mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
-
-    @Override
-    protected void initWindowAnimations() {
-        Slide slideTransition = new Slide();
-        slideTransition.setDuration(500);
-        slideTransition.setSlideEdge(Gravity.LEFT);
-
-        getWindow().setEnterTransition(slideTransition);
-    }
-
     private boolean handleNavigationItemSelected(MenuItem item) {
         final BaseFragment[] showFragment = new BaseFragment[1];
         int itemId = item.getItemId();

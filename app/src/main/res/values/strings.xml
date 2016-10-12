@@ -120,6 +120,10 @@
     <string name="debug">测试</string>
     <string name="setting">设置</string>
     <string name="help">帮助</string>
+    <string name="share">分享</string>
+    <string name="throw_coin">投硬币</string>
+    <string name="collection">收藏</string>
+    <string name="add_attention">+关注</string>
 
 
 </resources>

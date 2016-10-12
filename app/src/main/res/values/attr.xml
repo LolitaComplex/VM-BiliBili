@@ -5,4 +5,11 @@
         <attr name="isItemCardVIew" format="boolean"/>
         <attr name="gridSize" format="integer"/>
     </declare-styleable>
+
+    <declare-styleable name="BiliDetailFunctionView">
+        <attr name="amount" format="integer"/>
+        <attr name="src" format="reference"/>
+        <attr name="titleText" format="string"/>
+        <attr name="amountColor" format="color"/>
+    </declare-styleable>
 </resources>

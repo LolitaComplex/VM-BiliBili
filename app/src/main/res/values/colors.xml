@@ -25,6 +25,8 @@
     <color name="orange_dark">#763100</color>
     <color name="blue">#66ccff</color>
     <color name="transparent">#00000000</color>
+    <color name="green">#0acf24</color>
+    <color name="pink">#FA7198</color>
 
     <drawable name="colorPrimary">#FA7198</drawable>
     <drawable name="colorPrimary_dark">#96435B</drawable>

@@ -21,7 +21,7 @@ import rx.functions.Action0;
  */
 public abstract class BaseActivity extends RxAppCompatActivity {
 
-    public static String TAG;
+    public String TAG;
     private static List<BaseActivity> mStackActivitys = new LinkedList<>();
     private Unbinder mBind;
 

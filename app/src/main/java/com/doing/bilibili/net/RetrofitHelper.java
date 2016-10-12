@@ -1,6 +1,8 @@
 package com.doing.bilibili.net;
 
 import com.doing.bilibili.baselib.utils.UIUtils;
+import com.doing.bilibili.net.api.BiliDetailCommentApi;
+import com.doing.bilibili.net.api.BiliDetailSummaryApi;
 import com.doing.bilibili.net.api.HomeBangumiApi;
 import com.doing.bilibili.net.api.HomeDiscoverApi;
 import com.doing.bilibili.net.api.HomeLiveStreamApi;
@@ -35,6 +37,8 @@ public class RetrofitHelper {
     public static final String APP_BASE_DISCOVER_URL = "http://s.search.bilibili.com";
 
     public static final String APP_BASE_URL = "http://app.bilibili.com";
+
+    public static final String APP_BILI_DETAIL_URL = "http://api.bilibili.cn";
 
     static {
         initOkHttpClient();
@@ -144,4 +148,25 @@ public class RetrofitHelper {
         return retrofit.create(HomeDiscoverApi.class);
     }
 
+    public static BiliDetailSummaryApi getBiliDetailSummaryData() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APP_BILI_DETAIL_URL)
+                .client(mOkHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+
+        return retrofit.create(BiliDetailSummaryApi.class);
+    }
+
+    public static BiliDetailCommentApi getBiliDetailCommentData() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APP_BILI_DETAIL_URL)
+                .client(mOkHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+
+        return retrofit.create(BiliDetailCommentApi.class);
+    }
 }

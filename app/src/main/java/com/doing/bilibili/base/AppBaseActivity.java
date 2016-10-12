@@ -1,17 +1,13 @@
 package com.doing.bilibili.base;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.activity.LoginActivity;
 import com.doing.bilibili.baselib.base.BaseActivity;
-import com.doing.bilibili.baselib.utils.LogUtils;
 import com.doing.bilibili.baselib.utils.UIUtils;
 
 import butterknife.BindView;

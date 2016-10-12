@@ -29,13 +29,19 @@ public class BiliNetUtils {
             public static final String TS = "ts";
             public static final String SIGN = "sign";
             public static final String CURSOR = "cursor";
-
+            public static final String PAGE = "page";
             public static final String PAGESIZE = "pagesize";
+            public static final String ORDER = "order";
 
             public static final String DEVICE = "_device";
             public static final String HWID = "_hwid";
             public static final String SCALE = "scale";
 
+            public static final String ULV = "_ulv";
+            public static final String PN = "pn";
+            public static final String PS = "ps";
+            public static final String SORT = "sort";
+            public static final String TYPE = "type";
         }
 
         public static class Value{
@@ -51,6 +57,8 @@ public class BiliNetUtils {
             public static final String SCREEN = "xxhdpi";
 
             public static final String HWID = "9ec238cf481b1087";
+
+            public static final String ULV = "10000";
 
         }
     }

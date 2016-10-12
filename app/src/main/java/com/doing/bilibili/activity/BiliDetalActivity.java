@@ -9,7 +9,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -17,11 +16,13 @@ import android.widget.ImageView;
 import com.doing.bilibili.R;
 import com.doing.bilibili.activity.callback.TabLayoutCallback;
 import com.doing.bilibili.base.AppBaseActivity;
+import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
 import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
+import com.doing.bilibili.entity.argument.DetailData;
 import com.doing.bilibili.fragment.detail.BiliDetailHomeFragment;
 import com.doing.bilibili.fragment.factory.BiliDetailFragmentFactory;
-import com.doing.bilibili.ui.ImageTextView;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 
@@ -31,14 +32,17 @@ import butterknife.BindView;
  */
 public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallback {
 
+    public static final String DETAIL_DATA = "DetailData";
+
+
     @BindView(R.id.General_toobar_bg)
     protected ImageView mToobarImageView;
     @BindView(R.id.General_collapsingToolbar)
     protected CollapsingToolbarLayout mCollapsingToolbar;
     @BindView(R.id.General_appBarLayout)
     protected AppBarLayout mAppBarLayout;
-    @BindView(R.id.General_tv_title)
-    protected ImageTextView mTvTitle;
+//    @BindView(R.id.General_tv_title)
+//    protected ImageTextView mTvTitle;
     @BindView(R.id.General_floatactionbution)
     protected FloatingActionButton mFloatButton;
     @BindView(R.id.General_tablayout)
@@ -47,6 +51,12 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
 
     public static void newInstance(Activity context) {
         context.startActivity(new Intent(context, BiliDetalActivity.class));
+    }
+
+    public static void newInstance(Activity context, DetailData data) {
+        Intent intent = new Intent(context, BiliDetalActivity.class);
+        intent.putExtra(DETAIL_DATA, data);
+        context.startActivity(intent);
     }
 
     @Override
@@ -63,9 +73,18 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
     protected void initView(Bundle savedInstanceState) {
         mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-        addFragment(R.id.General_content,
-                BiliDetailHomeFragment.newInstance(), false);
+        Intent intent = getIntent();
 
+        DetailData detailData = intent.getParcelableExtra(DETAIL_DATA);
+
+        Picasso.with(this)
+                .load(detailData.getTitleCover())
+                .resize(600, 360)
+                .centerCrop()
+                .into(mToobarImageView);
+
+        addFragment(R.id.General_content,
+                BiliDetailHomeFragment.newInstance(detailData), false);
     }
 
     @Override
@@ -76,27 +95,31 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
         params.topMargin = UIUtils.getStatusBarHeight();
         mToolbar.setLayoutParams(params);
 
-        ActionBar actionBar = getSupportActionBar();
+        final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
+//            actionBar.setDisplayShowTitleEnabled(false);
         }
-
+        assert actionBar != null;
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 if (verticalOffset == 0) {
-                    mTvTitle.setText("av666666");
-                    mTvTitle.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-                    mTvTitle.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+//                    mTvTitle.setText("av666666");
+//                    mTvTitle.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+//                    mTvTitle.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+                    actionBar.setDisplayShowTitleEnabled(false);
+                    mToolbar.setLogo(null);
                     mFloatButton.show();
                 } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
-                    mTvTitle.setText("立即播放");
-                    mTvTitle.setGravity(Gravity.CENTER_VERTICAL);
-                    mTvTitle.setImageInView(ImageTextView.LEFT, R.drawable.ic_fab_play);
+//                    mTvTitle.setText("立即播放");
+//                    mTvTitle.setGravity(Gravity.CENTER_VERTICAL);
+//                    mTvTitle.setImageInView(ImageTextView.LEFT, R.drawable.ic_fab_play);
                     mFloatButton.hide();
+                    actionBar.setDisplayShowTitleEnabled(true);
+                    mToolbar.setLogo(R.drawable.ic_fab_play);
                 }
             }
         });

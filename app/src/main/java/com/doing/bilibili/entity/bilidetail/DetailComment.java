@@ -20,7 +20,6 @@ public class DetailComment {
     private List<RepliesBean> replies;
 
 
-
     public List<RepliesBean> getReplies() {
         return replies;
     }
@@ -608,7 +607,7 @@ public class DetailComment {
             public static class VipBean {
                 private int accessStatus;
                 private String dueRemark;
-                private int vipDueDate;
+                private String vipDueDate;
                 private int vipStatus;
                 private String vipStatusWarn;
                 private int vipType;
@@ -629,11 +628,11 @@ public class DetailComment {
                     this.dueRemark = dueRemark;
                 }
 
-                public int getVipDueDate() {
+                public String getVipDueDate() {
                     return vipDueDate;
                 }
 
-                public void setVipDueDate(int vipDueDate) {
+                public void setVipDueDate(String vipDueDate) {
                     this.vipDueDate = vipDueDate;
                 }
 
@@ -1266,7 +1265,7 @@ public class DetailComment {
             public static class VipBean {
                 private int accessStatus;
                 private String dueRemark;
-                private int vipDueDate;
+                private String vipDueDate;
                 private int vipStatus;
                 private String vipStatusWarn;
                 private int vipType;
@@ -1287,11 +1286,11 @@ public class DetailComment {
                     this.dueRemark = dueRemark;
                 }
 
-                public int getVipDueDate() {
+                public String getVipDueDate() {
                     return vipDueDate;
                 }
 
-                public void setVipDueDate(int vipDueDate) {
+                public void setVipDueDate(String vipDueDate) {
                     this.vipDueDate = vipDueDate;
                 }
 

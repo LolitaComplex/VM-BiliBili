@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
 import butterknife.Unbinder;
+import rx.Subscription;
 
 /**
  * Created by Doing on 2016/9/2.
@@ -26,6 +27,8 @@ public class BaseFragment extends RxFragment {
 
     protected int mContainerId;
 
+    protected Subscription mSubscription;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +40,13 @@ public class BaseFragment extends RxFragment {
         }
 
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        subscirp();
     }
 
     public String getFragmentTag(){
@@ -54,5 +64,18 @@ public class BaseFragment extends RxFragment {
 
     public void setContainerId(int resId) {
         mContainerId = resId;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        if (mSubscription != null && !mSubscription.isUnsubscribed()) {
+            mSubscription.unsubscribe();
+        }
+    }
+
+    //================= 模板方法 ==============
+    protected void subscirp() {
     }
 }

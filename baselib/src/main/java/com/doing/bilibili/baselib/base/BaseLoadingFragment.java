@@ -31,12 +31,12 @@ public abstract class BaseLoadingFragment<T> extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
+        BaseLoadingFragment.this.initVariable();
+
         if (mLoadingPage == null) {
             mLoadingPage = new LoadingPage<T>(mContext) {
                 @Override
                 protected View createSuccessView() {
-                    BaseLoadingFragment.this.initVariable();
-
                     View inflate = UIUtils.inflate(getLayoutId());
                     ButterKnife.bind(BaseLoadingFragment.this, inflate);
                     BaseLoadingFragment.this.initView();

@@ -66,7 +66,7 @@ public class PartitionFragment extends BaseStaticFragment {
 
             @Override
             protected boolean isEnable(int viewType) {
-                return false;
+                return true;
             }
         };
 

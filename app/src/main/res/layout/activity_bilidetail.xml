@@ -16,6 +16,7 @@
             android:id="@+id/General_collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:titleEnabled="false"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:statusBarScrim="@android:color/transparent"
@@ -49,20 +50,22 @@
                 android:id="@+id/General_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
+                app:logo="@drawable/ic_fab_play"
                 app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
                 app:navigationContentDescription="0dp"
+                app:title="av666666"
                 >
 
-                <com.doing.bilibili.ui.ImageTextView
-                    android:id="@+id/General_tv_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawablePadding="2dp"
-                    android:text="av6666666"
-                    android:textColor="@color/text_white"
-                    android:textSize="18sp"
-                    />
+                <!--<com.doing.bilibili.ui.ImageTextView-->
+                    <!--android:id="@+id/General_tv_title"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:drawablePadding="2dp"-->
+                    <!--android:text="av6666666"-->
+                    <!--android:textColor="@color/text_white"-->
+                    <!--android:textSize="18sp"-->
+                    <!--/>-->
 
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>

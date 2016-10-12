@@ -4,7 +4,7 @@ package com.doing.bilibili.entity.bilidetail;
  * Created by Doing on 2016/10/11.
  *
  */
-public class DetailVedioInfo {
+public class DetailVideoInfo {
 
 
     /**

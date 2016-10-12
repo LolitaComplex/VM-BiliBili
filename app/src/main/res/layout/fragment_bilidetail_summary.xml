@@ -11,8 +11,19 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/layout_header_detial_info"
+            layout="@layout/include_header_detial_info"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_gray"
+            />
+
+        <include
+            layout="@layout/include_body_author_info"
             />
     </LinearLayout>
+
 </android.support.v4.widget.NestedScrollView>
 
