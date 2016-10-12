@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import com.doing.bilibili.R;
 import com.doing.bilibili.activity.callback.TabLayoutCallback;
 import com.doing.bilibili.base.AppBaseActivity;
-import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
 import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.argument.DetailData;
@@ -48,6 +47,7 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
     @BindView(R.id.General_tablayout)
     protected TabLayout mTabLayout;
     private BiliDetailFragmentFactory mFactory;
+    private String mAv;
 
     public static void newInstance(Activity context) {
         context.startActivity(new Intent(context, BiliDetalActivity.class));
@@ -76,6 +76,7 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
         Intent intent = getIntent();
 
         DetailData detailData = intent.getParcelableExtra(DETAIL_DATA);
+        mAv = detailData.getAv();
 
         Picasso.with(this)
                 .load(detailData.getTitleCover())
@@ -94,6 +95,7 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
         CollapsingToolbarLayout.LayoutParams params = (CollapsingToolbarLayout.LayoutParams) mToolbar.getLayoutParams();
         params.topMargin = UIUtils.getStatusBarHeight();
         mToolbar.setLayoutParams(params);
+        mToolbar.setTitle("av" + mAv);
 
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

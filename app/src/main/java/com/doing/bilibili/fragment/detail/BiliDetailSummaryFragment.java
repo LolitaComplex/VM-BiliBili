@@ -1,32 +1,33 @@
 package com.doing.bilibili.fragment.detail;
 
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.view.LayoutInflater;
+import android.support.annotation.IntegerRes;
+import android.support.annotation.LayoutRes;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.activity.BiliDetalActivity;
+import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
+import com.doing.bilibili.baselib.adapter.recyclerview.CommonAdapter;
+import com.doing.bilibili.baselib.adapter.recyclerview.HeaderAndFooterWrapper;
 import com.doing.bilibili.baselib.base.BaseLoadingFragment;
 import com.doing.bilibili.baselib.entity.Response;
+import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.argument.DetailData;
 import com.doing.bilibili.entity.bilidetail.DetailRecommandVideo;
 import com.doing.bilibili.entity.bilidetail.DetailVideoInfo;
-import com.doing.bilibili.entity.bilidetail.SummaryData;
 import com.doing.bilibili.net.BiliNetUtils;
 import com.doing.bilibili.net.RetrofitHelper;
-import com.doing.bilibili.ui.BiliDetailFunctionView;
-import com.squareup.picasso.Picasso;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import jp.wasabeef.recyclerview.animators.FadeInAnimator;
 import rx.Observable;
 import rx.functions.Func1;
 
@@ -39,30 +40,9 @@ import static com.doing.bilibili.net.BiliNetUtils.RequestParams.Value;
  */
 public class BiliDetailSummaryFragment extends BaseLoadingFragment<DetailRecommandVideo> {
 
-    @BindView(R.id.BiliDetailSummaryFragment_header_tv_title)
-    protected TextView mHeaderTvTitle;
-    @BindView(R.id.BiliDetailSummaryFragment_header_tv_played)
-    protected TextView mHeaderTvPlayed;
-    @BindView(R.id.BiliDetailSummaryFragment_header_tv_playing)
-    protected TextView mHeaderTvPlaying;
-    @BindView(R.id.BiliDetailSummaryFragment_header_tv_instruction)
-    protected TextView mHeaderTvInstruction;
-    @BindView(R.id.BiliDetailSummaryFragment_header_ll_share)
-    protected BiliDetailFunctionView mHeaderShare;
-    @BindView(R.id.BiliDetailSummaryFragment_header_ll_coin)
-    protected BiliDetailFunctionView mHeaderCoin;
-    @BindView(R.id.BiliDetailSummaryFragment_header_ll_collection)
-    protected BiliDetailFunctionView mHeaderCollect;
-    @BindView(R.id.BiliDetailSummaryFragment_header_ll_download)
-    protected BiliDetailFunctionView mHeaderDownload;
-    @BindView(R.id.BiliDetailSummaryFragment_body_iv_cover)
-    protected ImageView mBodyIvCover;
-    @BindView(R.id.BiliDetailSummaryFragment_body_tv_author)
-    protected TextView mBodyTvAuthor;
-    @BindView(R.id.BiliDetailSummaryFragment_body_tv_time)
-    protected TextView mBodyTvTime;
-    @BindView(R.id.BiliDetailSummaryFragment_body_tv_attention)
-    protected TextView mBodyTvAttention;
+
+    @BindView(R.id.BiliDetailFragment_recycler)
+    protected RecyclerView mRecyclerView;
 
     private DetailVideoInfo mVideoInfo;
     private DetailData mDetailData;
@@ -85,27 +65,50 @@ public class BiliDetailSummaryFragment extends BaseLoadingFragment<DetailRecomma
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_bilidetail_summary;
+        return R.layout.fragment_bilidetail;
     }
 
     @Override
     public void initViewWithData(DetailRecommandVideo data) {
-        SummaryData sData = new SummaryData(mVideoInfo, data);
+        CommonAdapter<DetailRecommandVideo.ListBean> adapter =
+                new CommonAdapter<DetailRecommandVideo.ListBean>(
+                        mContext, R.layout.item_recycler_common, data.getList()) {
+                    @Override
+                    protected void convert(BaseViewHolder holder,
+                                           DetailRecommandVideo.ListBean listBean, int positon) {
+                        holder.setText(R.id.RecyclerCommonItem_tv_title, listBean.getTitle())
+                                .setImageUrl(R.id.RecyclerCommonItem_iv_cover, listBean.getPic());
+                    }
+                };
 
-        mHeaderTvTitle.setText(mVideoInfo.getTitle().trim());
-        mHeaderTvInstruction.setText(mVideoInfo.getDescription());
-        if (mDetailData != null) {
-            mHeaderTvPlayed.setText(mDetailData.getPlayed());
-            mHeaderTvPlaying.setText(mDetailData.getPlaying());
+        HeaderAndFooterWrapper wrapperAdapter = new HeaderAndFooterWrapper(adapter);
+
+        //拆成两部分是因为HeaderView过长时显示不完整
+        //后来找到的显示不完整的原因是我设置match_parent导致的。可是都改成这个样子了，懒得在改回去了
+        wrapperAdapter.addHeaderView(initHeaderView(R.layout.item_summary_recycler_header_top));
+        wrapperAdapter.addHeaderView(initHeaderView(R.layout.item_summary_recycler_header_bottom));
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.setItemAnimator(new FadeInAnimator());
+        mRecyclerView.setAdapter(wrapperAdapter);
+    }
+
+    private View initHeaderView(@LayoutRes int headerId) {
+        LinearLayout inflate = (LinearLayout) UIUtils.inflate(headerId);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        inflate.setLayoutParams(params);
+        inflate.setOrientation(LinearLayout.VERTICAL);
+
+        if (headerId == R.layout.item_summary_recycler_header_top) {
+            SummaryHeaderTopHolder holer = new SummaryHeaderTopHolder(inflate, mVideoInfo, mDetailData);
+            holer.covertView();
+        } else {
+            SummaryHeaderBottomHolder holer = new SummaryHeaderBottomHolder(inflate, mVideoInfo, mDetailData);
+            holer.covertView();
         }
 
-        mHeaderCoin.setContent(mVideoInfo.getCoins());
-        mHeaderCollect.setContent(mVideoInfo.getFavorites());
-
-//        Picasso.with(mContext).load(mVideoInfo.getFace()).get();
-//
-//        RoundedBitmapDrawableFactory.
-//        mBodyIvCover.getDrawable().get
+        return inflate;
     }
 
     @Override
@@ -171,5 +174,6 @@ public class BiliDetailSummaryFragment extends BaseLoadingFragment<DetailRecomma
         map.put(Key.SIGN, sign);
         return map;
     }
+
 
 }

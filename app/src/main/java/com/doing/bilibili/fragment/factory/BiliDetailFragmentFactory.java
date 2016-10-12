@@ -18,12 +18,10 @@ public class BiliDetailFragmentFactory {
     public final static int SUMMARY = 0;
     public final static int COMMENT = 1;
 
-    private static BiliDetailFragmentFactory instance = new BiliDetailFragmentFactory();
-
     private BiliDetailFragmentFactory(){}
 
     public static BiliDetailFragmentFactory getInstance() {
-        return instance;
+        return new BiliDetailFragmentFactory();
     }
 
     private SparseArrayCompat<BaseFragment> factory = new SparseArrayCompat<>();

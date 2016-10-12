@@ -273,10 +273,7 @@ public class MainActivity extends AppBaseActivity implements TabLayoutCallback, 
                                 MainActivity.this);
 
                         Bitmap source = BitmapFactory.decodeResource(getResources(), R.drawable.header_default);
-                        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory
-                                .create(UIUtils.getResources(), source);
-                        roundedBitmapDrawable.setCornerRadius(source.getWidth() / 2);
-                        roundedBitmapDrawable.setAntiAlias(true);
+                        RoundedBitmapDrawable roundedBitmapDrawable = UIUtils.getRoudedBitmapDrawable(source);
 
                         mNvHeaderHolder.setImageDrawable(R.id.NavigationHeader_iv_header,
                                 roundedBitmapDrawable);

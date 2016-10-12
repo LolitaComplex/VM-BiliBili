@@ -17,7 +17,7 @@
     <color name="text_white">#FFFFFF</color>
     <color name="text_primary">@color/colorPrimary</color>
     <color name="dark_gray">#777</color>
-    <color name="light_gray">#eee</color>
+    <color name="light_gray">#ddd</color>
 
 
     <color name="orange">#c45303</color>

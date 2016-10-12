@@ -28,7 +28,7 @@ public class BiliDetailCommentFragment extends BaseLoadingFragment<DetailComment
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_bilidetail_comment;
+        return R.layout.fragment_bilidetail;
     }
 
     @Override

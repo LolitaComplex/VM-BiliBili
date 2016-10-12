@@ -86,5 +86,9 @@ public class BiliDetailFunctionView extends FrameLayout {
         setContent(Integer.parseInt(amount), -1, null);
     }
 
-
+    @Override
+    public void setOnClickListener(OnClickListener l) {
+        this.setBackgroundResource(R.drawable.item_touch_have_bg);
+        super.setOnClickListener(l);
+    }
 }
