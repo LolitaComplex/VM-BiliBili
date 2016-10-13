@@ -6,8 +6,7 @@ import com.doing.bilibili.base.RxBus;
 import com.doing.bilibili.baselib.adapter.recyclerview.HeaderAndFooterWrapper;
 import com.doing.bilibili.baselib.base.BaseFragment;
 import com.doing.bilibili.baselib.entity.Response;
-import com.doing.bilibili.baselib.utils.ToastUtil;
-import com.doing.bilibili.entity.bus.HotRecommend;
+import com.doing.bilibili.entity.bus.BusRecommend;
 import com.doing.bilibili.entity.recommend.BannerRecommand;
 import com.doing.bilibili.entity.recommend.HomeRecommend;
 import com.doing.bilibili.entity.recommend.Recommend;
@@ -19,15 +18,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import rx.Observable;
 import rx.functions.Action1;
 import rx.functions.Func2;
-import rx.subjects.Subject;
 
 /**
  * Created by Doing on 2016/9/6.
- *
  */
 public class RecommendFragment extends HomeRecyclerFragment<HomeRecommend> {
 
@@ -46,7 +42,7 @@ public class RecommendFragment extends HomeRecyclerFragment<HomeRecommend> {
         //添加头部Banner
         HeaderAndFooterWrapper wrapperAdapter = new HeaderAndFooterWrapper(animatorAdapter);
         List<String> imageUrlList = new ArrayList<>();
-        for (BannerRecommand bannerRecommand :data.getBanners()) {
+        for (BannerRecommand bannerRecommand : data.getBanners()) {
             imageUrlList.add(bannerRecommand.getImage());
         }
 
@@ -62,12 +58,13 @@ public class RecommendFragment extends HomeRecyclerFragment<HomeRecommend> {
     protected void subscirp() {
         //更新热门数据
         RxBus.getDefault()
-                .toObservable(HotRecommend.class)
-                .subscribe(new Action1<HotRecommend>() {
+                .toObservable(BusRecommend.class)
+                .subscribe(new Action1<BusRecommend>() {
                     @Override
-                    public void call(HotRecommend hotRecommend) {
-                        mRecommends.get(0).setBody(hotRecommend.getData());
-                        mRecyclerView.getAdapter().notifyItemChanged(1);
+                    public void call(BusRecommend hotRecommend) {
+                        int refreshPosition = hotRecommend.getPosition() + 1;
+                        mRecommends.get(refreshPosition - 1).setBody(hotRecommend.getData());
+                        mRecyclerView.getAdapter().notifyItemChanged(refreshPosition);
                     }
                 });
     }

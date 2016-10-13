@@ -47,4 +47,8 @@ public interface HomeRecommendApi {
 
     @GET("x/show/hot/old")
     Observable<Response<List<Recommend.BodyBean>>> getRecommendedHotData();
+
+
+    @GET("x/show/live?plat=0&rand=1")
+    Observable<Response<List<Recommend.BodyBean>>> getRecommendedLiveData();
 }

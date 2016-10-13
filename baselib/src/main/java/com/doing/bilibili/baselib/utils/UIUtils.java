@@ -214,12 +214,14 @@ public class UIUtils {
         borderPaint.setStyle(Paint.Style.STROKE);
         borderPaint.setStrokeWidth(borderWidthHalf);
         borderPaint.setColor(Color.WHITE);
+        borderPaint.setAntiAlias(true);
 
         //添加边框
         canvas.drawCircle(canvas.getWidth()/2, canvas.getWidth()/2, newBitmapSquareWidth/2, borderPaint);
 
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),roundedBitmap);
         roundedBitmapDrawable.setGravity(Gravity.CENTER);
+        roundedBitmapDrawable.setAntiAlias(true);
         roundedBitmapDrawable.setCircular(true);
 
         return roundedBitmapDrawable;

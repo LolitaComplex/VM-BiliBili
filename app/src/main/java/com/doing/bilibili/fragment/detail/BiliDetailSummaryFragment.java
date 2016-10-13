@@ -74,6 +74,8 @@ public class BiliDetailSummaryFragment extends BaseLoadingFragment<DetailRecomma
 
     @Override
     public void initViewWithData(DetailRecommandVideo data) {
+        setDataIsShowing(true);
+
         CommonAdapter<DetailRecommandVideo.ListBean> adapter =
                 new CommonAdapter<DetailRecommandVideo.ListBean>(
                         mContext, R.layout.item_recycler_common, data.getList()) {

@@ -52,8 +52,6 @@ public class LiveStreamFragment extends HomeRecyclerFragment<HomeLiveStream> imp
     @Override
     public void initViewWithData(HomeLiveStream data) {
         //设置该页面已经加载成功数据
-        setDataIsShowing(true);
-
         HomeLiveStreamAdapter adapter = new HomeLiveStreamAdapter(mContext, data.getPartitions());
 
         RotateAnimatorAdapter animatorAdapter = new RotateAnimatorAdapter(adapter);

@@ -9,6 +9,7 @@ import com.doing.bilibili.fragment.recycleritem.RecommendBangumiItem;
 import com.doing.bilibili.fragment.recycleritem.RecommendCommonItem;
 import com.doing.bilibili.fragment.recycleritem.RecommendHotItem;
 import com.doing.bilibili.fragment.recycleritem.RecommendLivingItem;
+import com.doing.bilibili.fragment.recycleritem.RecommendSpecialItem;
 import com.doing.bilibili.fragment.recycleritem.RecommendTopicItem;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class HomeRecommendAdapter extends MultiItemTypeAdapter<Recommend> {
         addItemViewDelegate(new RecommendHotItem(context));
         addItemViewDelegate(new RecommendLivingItem(context));
         addItemViewDelegate(new RecommendBangumiItem(context));
+        addItemViewDelegate(new RecommendSpecialItem(context));
         addItemViewDelegate(new RecommendCommonItem(context));
         addItemViewDelegate(new RecommendTopicItem(context));
         addItemViewDelegate(new RecommendActivityItem(context));

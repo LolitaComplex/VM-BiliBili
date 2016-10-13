@@ -13,6 +13,7 @@ import com.doing.bilibili.ui.GridViewFactoryView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import static com.doing.bilibili.adapter.HomeRecommendAdapter.REGION;
 
@@ -60,6 +61,7 @@ public class RecommendCommonItem extends ItemViewDelegateImp<Recommend> implemen
     public void convert(BaseViewHolder holder, Recommend recommend, int position) {
         setLogAndTitle(holder, recommend.getHead());
 
+
         holder.setOnClickListener(R.id.RecommendCommonItem_header_more, this);
         holder.setOnClickListener(R.id.RecommendCommonItem_footer_btn, this);
         holder.setOnClickListener(R.id.RecommendCommonItem_footer_ll, this);
@@ -70,7 +72,9 @@ public class RecommendCommonItem extends ItemViewDelegateImp<Recommend> implemen
 
     private void setLogAndTitle(BaseViewHolder holder, Recommend.HeadBean headBean) {
         String title = headBean.getTitle();
-        holder.setText(R.id.RecommendCommonItem_header_tv_title, title);
+        holder.setText(R.id.RecommendCommonItem_header_tv_title, title)
+                .setText(R.id.RecommendCommonItem_footer_tv, new Random().nextInt(1000 - 1)
+                        + UIUtils.getString(R.string.playing_live_click_refresh));
         holder.setImageBitmapRes(R.id.RecommendCommonItem_header_iv_logo, iconBox.get(title));
 
         for (String key: iconBox.keySet()) {

@@ -1,18 +1,13 @@
 package com.doing.bilibili.fragment.detail;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -39,13 +34,9 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import jp.wasabeef.recyclerview.animators.FadeInAnimator;
 import rx.Observable;
-import rx.Scheduler;
-import rx.functions.Action1;
 import rx.functions.Action2;
-import rx.functions.Action3;
 
 import static com.doing.bilibili.net.BiliNetUtils.RequestParams.Key;
 import static com.doing.bilibili.net.BiliNetUtils.RequestParams.Value;
@@ -84,6 +75,8 @@ public class BiliDetailCommentFragment extends BaseLoadingFragment<DetailComment
 
     @Override
     public void initViewWithData(DetailComment data) {
+        setDataIsShowing(true);
+
         CommonAdapter<DetailComment.RepliesBean> adapter =
                 new CommonAdapter<DetailComment.RepliesBean>(
                         mContext, R.layout.item_recycler_comment, data.getReplies()) {
