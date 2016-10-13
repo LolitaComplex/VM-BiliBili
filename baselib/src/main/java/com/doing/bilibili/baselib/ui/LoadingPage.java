@@ -14,6 +14,7 @@ import com.doing.bilibili.baselib.entity.Response;
 import com.doing.bilibili.baselib.utils.UIUtils;
 
 import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -155,7 +156,7 @@ public abstract class LoadingPage<T> extends FrameLayout {
             return;
         }
 
-        responseObservable
+       responseObservable
                 .map(new Func1<Response<T>, T>() {
                     @Override
                     public T call(Response<T> responseResult) {
@@ -174,12 +175,12 @@ public abstract class LoadingPage<T> extends FrameLayout {
                     public void call(T t) {
                         if (t == null) {
                             mCurrentState = STATE_ERROR;
-                        }else {
+                        } else {
                             mCurrentState = load(t).getValue();
                         }
 
                         showPage();
-                        if(mCurrentState == STATE＿SUCCESS)
+                        if (mCurrentState == STATE＿SUCCESS)
                             initViewWithData(t);
                     }
                 }, new Action1<Throwable>() {
@@ -189,6 +190,7 @@ public abstract class LoadingPage<T> extends FrameLayout {
                         showPage();
                     }
                 });
+
 
         showPage();
     }

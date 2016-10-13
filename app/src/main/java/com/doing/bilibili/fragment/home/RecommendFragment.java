@@ -2,9 +2,12 @@ package com.doing.bilibili.fragment.home;
 
 import com.doing.bilibili.adapter.HomeRecommendAdapter;
 import com.doing.bilibili.adapter.RotateAnimatorAdapter;
+import com.doing.bilibili.base.RxBus;
 import com.doing.bilibili.baselib.adapter.recyclerview.HeaderAndFooterWrapper;
 import com.doing.bilibili.baselib.base.BaseFragment;
 import com.doing.bilibili.baselib.entity.Response;
+import com.doing.bilibili.baselib.utils.ToastUtil;
+import com.doing.bilibili.entity.bus.HotRecommend;
 import com.doing.bilibili.entity.recommend.BannerRecommand;
 import com.doing.bilibili.entity.recommend.HomeRecommend;
 import com.doing.bilibili.entity.recommend.Recommend;
@@ -18,6 +21,7 @@ import java.util.Map;
 
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import rx.Observable;
+import rx.functions.Action1;
 import rx.functions.Func2;
 import rx.subjects.Subject;
 
@@ -27,12 +31,15 @@ import rx.subjects.Subject;
  */
 public class RecommendFragment extends HomeRecyclerFragment<HomeRecommend> {
 
+    private List<Recommend> mRecommends;
+
     public static BaseFragment newInstance() {
         return new RecommendFragment();
     }
 
     @Override
     public void initViewWithData(HomeRecommend data) {
+        mRecommends = data.getRecommends();
         HomeRecommendAdapter adapter = new HomeRecommendAdapter(getContext(), data.getRecommends());
 
         RotateAnimatorAdapter animatorAdapter = new RotateAnimatorAdapter(adapter);
@@ -49,6 +56,20 @@ public class RecommendFragment extends HomeRecyclerFragment<HomeRecommend> {
         mRecyclerView.setAdapter(wrapperAdapter);
 
         super.initViewWithData(data);
+    }
+
+    @Override
+    protected void subscirp() {
+        //更新热门数据
+        RxBus.getDefault()
+                .toObservable(HotRecommend.class)
+                .subscribe(new Action1<HotRecommend>() {
+                    @Override
+                    public void call(HotRecommend hotRecommend) {
+                        mRecommends.get(0).setBody(hotRecommend.getData());
+                        mRecyclerView.getAdapter().notifyItemChanged(1);
+                    }
+                });
     }
 
     @Override

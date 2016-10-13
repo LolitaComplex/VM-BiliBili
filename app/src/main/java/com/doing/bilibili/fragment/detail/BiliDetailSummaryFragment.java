@@ -1,7 +1,6 @@
 package com.doing.bilibili.fragment.detail;
 
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +13,7 @@ import com.doing.bilibili.activity.BiliDetalActivity;
 import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
 import com.doing.bilibili.baselib.adapter.recyclerview.CommonAdapter;
 import com.doing.bilibili.baselib.adapter.recyclerview.HeaderAndFooterWrapper;
+import com.doing.bilibili.baselib.base.BaseFragment;
 import com.doing.bilibili.baselib.base.BaseLoadingFragment;
 import com.doing.bilibili.baselib.entity.Response;
 import com.doing.bilibili.baselib.utils.UIUtils;
@@ -47,8 +47,12 @@ public class BiliDetailSummaryFragment extends BaseLoadingFragment<DetailRecomma
     private DetailVideoInfo mVideoInfo;
     private DetailData mDetailData;
 
-    public static BiliDetailSummaryFragment newInstance() {
-        return new BiliDetailSummaryFragment();
+    public static BaseFragment newInstance(DetailData detailData) {
+        BaseFragment fragment = new BiliDetailSummaryFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(BiliDetalActivity.DETAIL_DATA, detailData);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
@@ -76,11 +80,18 @@ public class BiliDetailSummaryFragment extends BaseLoadingFragment<DetailRecomma
                     @Override
                     protected void convert(BaseViewHolder holder,
                                            DetailRecommandVideo.ListBean listBean, int positon) {
+                        holder.getContentView().setBackgroundResource(R.drawable.item_touch_bg_transparent);
+
                         holder.setText(R.id.RecyclerCommonItem_tv_title, listBean.getTitle())
+                                .setText(R.id.RecyclerCommonItem_tv_up, listBean.getAuthor())
+                                .setText(R.id.RecyclerCommonItem_tv_playing, listBean.getPlay())
+                                .setText(R.id.RecyclerCommonItem_tv_leave_mes, listBean.getReview()+"")
                                 .setImageUrl(R.id.RecyclerCommonItem_iv_cover, listBean.getPic());
                     }
+
                 };
 
+        adapter.setEnable(true);
         HeaderAndFooterWrapper wrapperAdapter = new HeaderAndFooterWrapper(adapter);
 
         //拆成两部分是因为HeaderView过长时显示不完整

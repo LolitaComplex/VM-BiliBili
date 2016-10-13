@@ -46,7 +46,6 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
     protected FloatingActionButton mFloatButton;
     @BindView(R.id.General_tablayout)
     protected TabLayout mTabLayout;
-    private BiliDetailFragmentFactory mFactory;
     private String mAv;
 
     public static void newInstance(Activity context) {
@@ -57,11 +56,6 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
         Intent intent = new Intent(context, BiliDetalActivity.class);
         intent.putExtra(DETAIL_DATA, data);
         context.startActivity(intent);
-    }
-
-    @Override
-    protected void initVariable() {
-        mFactory = BiliDetailFragmentFactory.getInstance();
     }
 
     @Override

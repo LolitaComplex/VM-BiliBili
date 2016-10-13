@@ -44,4 +44,7 @@ public interface HomeRecommendApi {
         bannerParams.put(Key.BUILD, Value.BUILD);
         bannerParams.put(Key.CHANNEL, Value.CHANNEL);
 */
+
+    @GET("x/show/hot/old")
+    Observable<Response<List<Recommend.BodyBean>>> getRecommendedHotData();
 }

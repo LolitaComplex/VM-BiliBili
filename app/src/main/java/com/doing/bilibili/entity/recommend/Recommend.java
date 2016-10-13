@@ -168,7 +168,6 @@ public class Recommend implements Parcelable{
     }
 
     public static class BodyBean {
-
         @Override
         public String toString() {
             return "BodyBean{" +

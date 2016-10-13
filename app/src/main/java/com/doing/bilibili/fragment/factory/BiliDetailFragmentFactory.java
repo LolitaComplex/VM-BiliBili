@@ -18,10 +18,14 @@ public class BiliDetailFragmentFactory {
     public final static int SUMMARY = 0;
     public final static int COMMENT = 1;
 
-    private BiliDetailFragmentFactory(){}
+    private DetailData mDetailData;
 
-    public static BiliDetailFragmentFactory getInstance() {
-        return new BiliDetailFragmentFactory();
+    private BiliDetailFragmentFactory(DetailData detailData) {
+        this.mDetailData = detailData;
+    }
+
+    public static BiliDetailFragmentFactory getInstance(DetailData detailData) {
+        return new BiliDetailFragmentFactory(detailData);
     }
 
     private SparseArrayCompat<BaseFragment> factory = new SparseArrayCompat<>();
@@ -36,48 +40,17 @@ public class BiliDetailFragmentFactory {
         if (fragment == null) {
             switch (position) {
                 case SUMMARY:
-                    fragment = BiliDetailSummaryFragment.newInstance();
+                    fragment = BiliDetailSummaryFragment.newInstance(mDetailData);
                     break;
 
                 case COMMENT:
-                    fragment = BiliDetailCommentFragment.newInstance();
+                    fragment = BiliDetailCommentFragment.newInstance(mDetailData);
                     break;
             }
         }
 
         if (factory != null && factory.indexOfValue(fragment) == -1) {
             factory.put(position, fragment);
-        }
-        return fragment;
-    }
-
-    public BaseFragment create(int position, DetailData data) {
-        BaseFragment fragment = null;
-
-        if (factory != null) {
-            fragment = factory.get(position);
-        }
-
-        if (fragment == null) {
-            switch (position) {
-                case SUMMARY:
-                    fragment = BiliDetailSummaryFragment.newInstance();
-                    break;
-
-                case COMMENT:
-                    fragment = BiliDetailCommentFragment.newInstance();
-                    break;
-            }
-        }
-
-        if (factory != null && factory.indexOfValue(fragment) == -1) {
-            factory.put(position, fragment);
-        }
-
-        if (fragment instanceof BiliDetailSummaryFragment) {
-            Bundle bundle = new Bundle();
-            bundle.putParcelable(BiliDetalActivity.DETAIL_DATA, data);
-            fragment.setArguments(bundle);
         }
         return fragment;
     }

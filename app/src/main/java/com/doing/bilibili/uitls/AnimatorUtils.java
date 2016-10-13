@@ -38,6 +38,10 @@ public class AnimatorUtils {
         animator.start();
     }
 
+    public void setRotateAnimatorCircle(View view) {
+        setRotateAnimator(view, 1000, 0, 360);
+    }
+
 
     private ValueAnimator setSwitchAnimaor(final View view, int duration, int closeHeight,
                                            final int openHeight, final Action3<ViewGroup.LayoutParams,Float,Float> action3) {

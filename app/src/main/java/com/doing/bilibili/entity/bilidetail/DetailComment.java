@@ -702,7 +702,7 @@ public class DetailComment {
         }
     }
 
-    static class HotsBean {
+    public static class HotsBean {
 
         /**
          * action : 0

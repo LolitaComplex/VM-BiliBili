@@ -47,4 +47,17 @@ bangumi.bilibili.com/api/bangumi_recommend?appkey=85eb6835b0a1034e&build=426003&
 bangumi.bilibili.com/api/bangumi_recommend?appkey=1d8b6e7d45233436&build=427000&cursor=-1&mobi_app=android&pagesize=10&platform=android&ts=1475775549000&sign=15d14d65d0112e008c0d657a6e6537e3
 
 
+//热门
+app.bilibili.com/bangumi/index_recommend?_device=android&_hwid=9ec238cf481b1087&_ulv=10000&access_key=62cf0587791729322f9dd6983ef0c273&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&screen=xxhdpi&ts=1476348425000&sign=233aa2529be11a63ceb402bbdf8f6de3
+
+app.bilibili.com/x/show/hot/old?platform=android&device=&build=427000&ts=1476348425000&access_key=62cf0587791729322f9dd6983ef0c273
+
+//直播
+app.bilibili.com/x/show/live?access_key=62cf0587791729322f9dd6983ef0c273&appkey=1d8b6e7d45233436&build=427000&channel=wandoujia&mobi_app=android&plat=0&platform=android&rand=1&ts=1476351704000&sign=89b1e00855d71b066ca3897701d38503
+
+//动画
+www.bilibili.com/index/ding/1.json?access_key=62cf0587791729322f9dd6983ef0c273&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&sign=ccde3a0c2e01cb24bfb6a6557f06af34
+
+//音乐区
+www.bilibili.com/index/ding/3.json?access_key=62cf0587791729322f9dd6983ef0c273&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&sign=ccde3a0c2e01cb24bfb6a6557f06af34
 

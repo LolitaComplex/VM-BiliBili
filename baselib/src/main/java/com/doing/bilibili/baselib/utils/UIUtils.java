@@ -221,6 +221,7 @@ public class UIUtils {
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),roundedBitmap);
         roundedBitmapDrawable.setGravity(Gravity.CENTER);
         roundedBitmapDrawable.setCircular(true);
+
         return roundedBitmapDrawable;
     }
 

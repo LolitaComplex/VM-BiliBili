@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/item_touch_bg_transparent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/RecyclerCommentItem_rl_parent"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/RecyclerCommentItem_ll_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/RecyclerCommentItem_iv_cover"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageView
+            android:id="@+id/RecyclerCommentItem_iv_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/RecyclerCommentItem_tv_nickname"
+        style="@style/TextStyle_14sp"
+        android:layout_toRightOf="@id/RecyclerCommentItem_ll_image"
+        />
+
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            android:id="@+id/RecyclerCommentItem_tv_comment"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_comment"
+            android:drawablePadding="3dp"
+            android:text="0"
+            android:textColor="@color/text_gray"
+            />
+
+        <TextView
+            android:id="@+id/RecyclerCommentItem_tv_support"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="@drawable/ic_feedback_support_grey"
+            android:drawablePadding="3dp"
+            android:text="0"
+            android:textColor="@color/text_gray"
+            />
+
+        <ImageView
+            android:id="@+id/RecyclerCommentItem_ib_more"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_more_grey"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/RecyclerCommentItem_tv_stiar"
+        style="@style/TextStyle_12sp"
+        android:layout_below="@+id/RecyclerCommentItem_tv_nickname"
+        android:layout_toRightOf="@id/RecyclerCommentItem_ll_image"
+        android:textColor="@color/text_gray"
+        />
+
+    <TextView
+        android:id="@+id/RecyclerCommentItem_tv_time"
+        style="@style/TextStyle_12sp"
+        android:layout_below="@+id/RecyclerCommentItem_tv_nickname"
+        android:layout_toRightOf="@id/RecyclerCommentItem_tv_stiar"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/text_gray"
+        />
+
+    <TextView
+        android:id="@+id/RecyclerCommentItem_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/RecyclerCommentItem_tv_stiar"
+        android:layout_toRightOf="@id/RecyclerCommentItem_ll_image"
+        android:textColor="@color/black"
+        />
+
+</RelativeLayout>
