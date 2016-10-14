@@ -9,13 +9,11 @@ import android.widget.ImageView;
 import com.doing.bilibili.R;
 import com.doing.bilibili.activity.BiliDetalActivity;
 import com.doing.bilibili.adapter.CardViewRecommandAdapter;
-import com.doing.bilibili.base.RxBus;
 import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
 import com.doing.bilibili.baselib.entity.Response;
 import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.argument.DetailData;
-import com.doing.bilibili.entity.bus.BusRecommend;
 import com.doing.bilibili.entity.recommend.Recommend;
 import com.doing.bilibili.net.RetrofitHelper;
 import com.doing.bilibili.ui.GridViewFactoryView;
@@ -24,10 +22,6 @@ import com.doing.bilibili.uitls.AnimatorUtils;
 import java.util.List;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 import static com.doing.bilibili.adapter.HomeRecommendAdapter.HOT_RECOMMEND;
 
@@ -72,7 +66,7 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
         holder.getView(R.id.RecommendHotItem_footer).setTag(position);
 
         GridViewFactoryView cardViewFactory = holder.getView(R.id.RecommendHotItem_body_cvf);
-        CardViewRecommandAdapter cardViewAdapter = new CardViewRecommandAdapter(
+        final CardViewRecommandAdapter cardViewAdapter = new CardViewRecommandAdapter(
                 mContext, R.layout.layout_cardview_hotrecommend, recommend.getBody());
         cardViewFactory.setAdapter(cardViewAdapter);
         cardViewFactory.setOnItemClickListener(new GridViewFactoryView.OnItemClickListener() {
@@ -81,7 +75,8 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
                 Recommend.BodyBean bodyBean = recommend.getBody().get(postionInner);
                 DetailData detailData = new DetailData(bodyBean.getParam()
                         ,bodyBean.getCover(), bodyBean.getPlay(), bodyBean.getDanmaku());
-                BiliDetalActivity.newInstance((Activity) mContext, detailData);
+                View imageview = ((ViewGroup) (((ViewGroup) view).getChildAt(0))).getChildAt(0);
+                BiliDetalActivity.newInstance((Activity) mContext, detailData, imageview);
             }
 
             @Override
@@ -101,7 +96,7 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
                 View imageView = ((ViewGroup) v).getChildAt(1);
                 if(imageView instanceof ImageView){
                     animatorUtils.setRotateAnimatorCircle(imageView);
-                    subscrib((Integer) v.getTag());
+                    post((Integer) v.getTag());
                 }
                 break;
         }

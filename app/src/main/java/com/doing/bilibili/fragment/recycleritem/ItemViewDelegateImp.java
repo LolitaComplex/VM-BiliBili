@@ -35,7 +35,7 @@ public abstract class ItemViewDelegateImp<T> implements ItemViewDelegate<T> {
         return false;
     }
 
-    protected void subscrib(final int position) {
+    protected void post(final int position) {
         retrofitdata()
                 .map(new Func1<Response<List<Recommend.BodyBean>>, List<Recommend.BodyBean>>() {
                     @Override

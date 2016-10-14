@@ -2,6 +2,7 @@ package com.doing.bilibili.adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.widget.ImageView;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
@@ -15,6 +16,7 @@ import java.util.List;
  *
  */
 public class CardViewRecommandAdapter extends CommonAdapter<Recommend.BodyBean> {
+
 
 
     public CardViewRecommandAdapter(Context context, int layoutId, List<Recommend.BodyBean> data) {
@@ -36,6 +38,7 @@ public class CardViewRecommandAdapter extends CommonAdapter<Recommend.BodyBean> 
                 .setImageUrl(R.id.CardViewItem_iv_title, bodyBean.getCover(), 660, 360)
                 .setText(R.id.CardViewItem_tv_playing, footerText1)
                 .setText(R.id.CardViewItem_tv_leave_mes, footerText2);
+
     }
 
     private String getNotNullText(String... text) {

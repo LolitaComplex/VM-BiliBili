@@ -35,16 +35,16 @@
         >
 
         <TextView
-        android:id="@+id/CardViewItem_tv_playing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:drawablePadding="5dp"
-        android:drawableStart="@drawable/ic_play_black"
-        android:paddingStart="10dp"
-        android:textColor="@color/gray"
-        android:textSize="12sp"
-        />
+            android:id="@+id/CardViewItem_tv_playing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/ic_play_black"
+            android:paddingStart="10dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            />
 
         <TextView
             android:id="@+id/CardViewItem_tv_leave_mes"
@@ -53,8 +53,8 @@
             android:layout_gravity="right"
             android:drawablePadding="5dp"
             android:drawableStart="@drawable/ic_leave_message"
-            android:textColor="@color/gray"
             android:paddingEnd="10dp"
+            android:textColor="@color/gray"
             android:textSize="12sp"
             />
     </FrameLayout>

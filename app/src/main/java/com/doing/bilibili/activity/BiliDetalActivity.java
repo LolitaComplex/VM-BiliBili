@@ -7,10 +7,15 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.doing.bilibili.R;
@@ -20,7 +25,7 @@ import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.argument.DetailData;
 import com.doing.bilibili.fragment.detail.BiliDetailHomeFragment;
-import com.doing.bilibili.fragment.factory.BiliDetailFragmentFactory;
+import com.doing.bilibili.uitls.TransitionHelper;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -52,16 +57,26 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
         context.startActivity(new Intent(context, BiliDetalActivity.class));
     }
 
-    public static void newInstance(Activity context, DetailData data) {
+    public static void newInstance(Activity context, DetailData data ,View imageView) {
+        Pair[] pairs = TransitionHelper.createSafeTrianstionParticipants(
+                context, false, new Pair<>(imageView, "activity_title"));
+        ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(context, pairs);
+
         Intent intent = new Intent(context, BiliDetalActivity.class);
         intent.putExtra(DETAIL_DATA, data);
-        context.startActivity(intent);
+        context.startActivity(intent, activityOptions.toBundle());
+    }
+
+    @Override
+    protected void initWindowAnimations() {
+
     }
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_bilidetail;
     }
+
 
     @Override
     protected void initView(Bundle savedInstanceState) {

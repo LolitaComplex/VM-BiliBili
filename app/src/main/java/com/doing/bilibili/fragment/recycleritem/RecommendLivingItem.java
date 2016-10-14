@@ -90,7 +90,7 @@ public class RecommendLivingItem extends ItemViewDelegateImp<Recommend> implemen
                 View imageView = ((ViewGroup) v).getChildAt(1);
                 if(imageView instanceof ImageView){
                     animatorUtils.setRotateAnimatorCircle(imageView);
-                    subscrib((Integer) v.getTag());
+                    post((Integer) v.getTag());
                 }
                 break;
         }

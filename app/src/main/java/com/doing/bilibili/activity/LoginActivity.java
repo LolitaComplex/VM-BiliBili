@@ -15,6 +15,7 @@ import android.text.TextWatcher;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
+import android.transition.Visibility;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -102,9 +103,10 @@ public class LoginActivity extends AppBaseActivity implements View.OnFocusChange
         explodeTransition.setDuration(500);
         getWindow().setEnterTransition(explodeTransition);
 
-        Fade fadeTransition = new Fade();
-        fadeTransition.setDuration(500);
-        getWindow().setReturnTransition(fadeTransition);
+        Fade slideTransition = new Fade();
+        slideTransition.setDuration(500);
+        getWindow().setReturnTransition(slideTransition);
+
     }
 
     @Override
