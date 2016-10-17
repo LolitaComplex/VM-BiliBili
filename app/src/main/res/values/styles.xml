@@ -102,6 +102,7 @@
         <item name="android:background">@drawable/item_touch_bg</item>
         <item name="android:drawablePadding">5dp</item>
         <item name="android:padding">15dp</item>
+        <item name="android:stateListAnimator">@animator/selector_item_raise</item>
     </style>
 
     <style name="LinearLayout_LivingHeader">

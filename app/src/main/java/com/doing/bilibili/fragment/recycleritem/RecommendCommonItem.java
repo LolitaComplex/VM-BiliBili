@@ -1,13 +1,17 @@
 package com.doing.bilibili.fragment.recycleritem;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.doing.bilibili.R;
+import com.doing.bilibili.activity.BiliDetalActivity;
 import com.doing.bilibili.adapter.CardViewRecommandAdapter;
 import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
 import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
+import com.doing.bilibili.entity.argument.DetailData;
 import com.doing.bilibili.entity.recommend.Recommend;
 import com.doing.bilibili.ui.GridViewFactoryView;
 
@@ -58,7 +62,7 @@ public class RecommendCommonItem extends ItemViewDelegateImp<Recommend> implemen
     }
 
     @Override
-    public void convert(BaseViewHolder holder, Recommend recommend, int position) {
+    public void convert(BaseViewHolder holder, final Recommend recommend, int position) {
         setLogAndTitle(holder, recommend.getHead());
 
 
@@ -68,6 +72,22 @@ public class RecommendCommonItem extends ItemViewDelegateImp<Recommend> implemen
 
         GridViewFactoryView cardViewFactory = holder.getView(R.id.RecommendCommonItem_body_cvf);
         cardViewFactory.setAdapter(new CardViewRecommandAdapter(mContext, R.layout.layout_cardview_hotrecommend, recommend.getBody()));
+
+        cardViewFactory.setOnItemClickListener(new GridViewFactoryView.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int postionInner) {
+                Recommend.BodyBean bodyBean = recommend.getBody().get(postionInner);
+                DetailData detailData = new DetailData(bodyBean.getParam()
+                        , bodyBean.getCover(), bodyBean.getPlay(), bodyBean.getDanmaku());
+                View imageview = ((ViewGroup) (((ViewGroup) view).getChildAt(0))).getChildAt(0);
+                BiliDetalActivity.newInstance((Activity) mContext, detailData, imageview);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int postion) {
+
+            }
+        });
     }
 
     private void setLogAndTitle(BaseViewHolder holder, Recommend.HeadBean headBean) {

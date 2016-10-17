@@ -11,8 +11,6 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.transition.Fade;
-import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,7 +57,7 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
 
     public static void newInstance(Activity context, DetailData data ,View imageView) {
         Pair[] pairs = TransitionHelper.createSafeTrianstionParticipants(
-                context, false, new Pair<>(imageView, "activity_title"));
+                context, false, new Pair<>(imageView, "activity_title"), Pair.create(imageView, "activity_bg"));
         ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(context, pairs);
 
         Intent intent = new Intent(context, BiliDetalActivity.class);

@@ -1,9 +1,13 @@
 package com.doing.bilibili.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.StateListAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -108,6 +112,10 @@ public class GridViewFactoryView extends GridLayout {
                 } else {
                     contentView.setBackgroundResource(R.drawable.item_touch_bg);
                 }
+                StateListAnimator animator = AnimatorInflater.
+                        loadStateListAnimator(getContext(), R.animator.selector_item_raise);
+
+                contentView.setStateListAnimator(animator);
             } else {
                 contentView = new FrameLayout(getContext());
             }

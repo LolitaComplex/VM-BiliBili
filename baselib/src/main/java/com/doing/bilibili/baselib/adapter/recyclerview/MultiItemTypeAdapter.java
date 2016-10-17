@@ -1,5 +1,7 @@
 package com.doing.bilibili.baselib.adapter.recyclerview;
 
+import android.animation.AnimatorInflater;
+import android.animation.StateListAnimator;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -48,6 +50,9 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
 
         onViewHolderCreate();
 
+        StateListAnimator animator = AnimatorInflater
+                .loadStateListAnimator(mContext, R.animator.selector_item_raise);
+        holder.getContentView().setStateListAnimator(animator);
 //        holder.getContentView().setBackgroundResource(R.drawable.item_touch_bg);
         setListener(parent, holder, viewType);
         return holder;
