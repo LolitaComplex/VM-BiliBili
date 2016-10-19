@@ -116,4 +116,12 @@
 
     </style>
 
+    <style name="SeekbarStyle">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:focusable">true</item>
+        <item name="android:progressDrawable">@drawable/layer_seekbar_little</item>
+        <item name="android:indeterminateDrawable">@drawable/layer_seekbar_little</item>
+        <item name="android:thumb">@drawable/bili_player_seekbar_thumb</item>
+    </style>
+
 </resources>

@@ -11,6 +11,7 @@ import com.doing.bilibili.activity.BiliDetalActivity;
 import com.doing.bilibili.adapter.CardViewRecommandAdapter;
 import com.doing.bilibili.baselib.adapter.recyclerview.BaseViewHolder;
 import com.doing.bilibili.baselib.entity.Response;
+import com.doing.bilibili.baselib.utils.DensityUitls;
 import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.entity.argument.DetailData;
@@ -74,7 +75,7 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
             public void onItemClick(View view, int postionInner) {
                 Recommend.BodyBean bodyBean = recommend.getBody().get(postionInner);
                 DetailData detailData = new DetailData(bodyBean.getParam()
-                        ,bodyBean.getCover(), bodyBean.getPlay(), bodyBean.getDanmaku());
+                        , bodyBean.getCover(), bodyBean.getPlay(), bodyBean.getDanmaku());
                 View imageview = ((ViewGroup) (((ViewGroup) view).getChildAt(0))).getChildAt(0);
                 BiliDetalActivity.newInstance((Activity) mContext, detailData, imageview);
             }
@@ -84,6 +85,8 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
 
             }
         });
+
+        int widthPixels = mContext.getResources().getDisplayMetrics().widthPixels;
     }
 
     @Override

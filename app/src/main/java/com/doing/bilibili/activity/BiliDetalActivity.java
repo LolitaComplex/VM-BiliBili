@@ -27,6 +27,7 @@ import com.doing.bilibili.uitls.TransitionHelper;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
+import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 /**
  * Created by Doing on 2016/10/10.
@@ -57,17 +58,13 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
 
     public static void newInstance(Activity context, DetailData data ,View imageView) {
         Pair[] pairs = TransitionHelper.createSafeTrianstionParticipants(
-                context, false, new Pair<>(imageView, "activity_title"), Pair.create(imageView, "activity_bg"));
+                context, false, new Pair<>(imageView, "activity_title"),
+                Pair.create(imageView.getParent(), "activity_bg"));
         ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(context, pairs);
 
         Intent intent = new Intent(context, BiliDetalActivity.class);
         intent.putExtra(DETAIL_DATA, data);
         context.startActivity(intent, activityOptions.toBundle());
-    }
-
-    @Override
-    protected void initWindowAnimations() {
-
     }
 
     @Override
@@ -93,6 +90,7 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
 
         addFragment(R.id.General_content,
                 BiliDetailHomeFragment.newInstance(detailData), false);
+
     }
 
     @Override
