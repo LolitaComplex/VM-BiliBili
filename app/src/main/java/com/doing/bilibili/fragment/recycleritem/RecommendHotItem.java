@@ -2,6 +2,7 @@ package com.doing.bilibili.fragment.recycleritem;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.SpannableString;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -86,7 +87,7 @@ public class RecommendHotItem extends ItemViewDelegateImp<Recommend> implements 
             }
         });
 
-        int widthPixels = mContext.getResources().getDisplayMetrics().widthPixels;
+
     }
 
     @Override

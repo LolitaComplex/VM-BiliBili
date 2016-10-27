@@ -2,10 +2,13 @@ package com.doing.bilibili.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +26,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.doing.bilibili.R;
@@ -83,6 +87,7 @@ public class LoginActivity extends AppBaseActivity implements View.OnFocusChange
         mTvPassword.addTextChangedListener(this);
 
         mBtnLogin.setClickable(false);
+
     }
 
     @Override
@@ -156,7 +161,6 @@ public class LoginActivity extends AppBaseActivity implements View.OnFocusChange
             case R.id.LoginActivity_btn_login:
                 User user = new User("布鲁马", "", "", "正式会员", 5, 666.6);
                 Altar.login(user);
-
                 RxBus.getDefault().post(user);
                 finish();
                 break;

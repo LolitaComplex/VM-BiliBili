@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@drawable/shape_gradient_dark_black"
-              android:gravity="center_vertical"
-              android:minHeight="50dp"
-              android:orientation="horizontal"
-              android:paddingLeft="15dp"
-              android:paddingRight="15dp"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/VideoPlayer_little_bottom_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_gradient_dark_black"
+    android:gravity="center_vertical"
+    android:minHeight="40dp"
+    android:orientation="horizontal"
+    android:layout_marginTop="300dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     >
 
     <ToggleButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:id="@+id/VideoPlayer_btn_play"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:background="@drawable/checkstate_play_or_pause"
         android:textOff=""
         android:textOn=""
         />
 
     <TextView
+        android:id="@+id/VideoPlayer_tv_currenttime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
         android:text="10:00"
         android:textColor="@color/text_white"
-        android:layout_marginLeft="5dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         />
 
     <SeekBar
+        android:id="@+id/VideoPlayer_seekbar"
+        style="@style/SeekbarStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginLeft="5dp"
-        style="@style/SeekbarStyle"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
         />
 
     <TextView
+        android:id="@+id/VideoPlayer_tv_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10:00"
         android:textColor="@color/text_white"
-        android:layout_marginLeft="5dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         />
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_portrait_fullscreen"
-        android:layout_marginLeft="5dp"
+        android:id="@+id/VideoPlayer_iv_fullscreen"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="2dp"
         android:scaleType="centerCrop"
+        android:src="@drawable/ic_portrait_fullscreen"
         />
 
 </LinearLayout>

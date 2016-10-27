@@ -21,6 +21,7 @@ import com.doing.bilibili.activity.callback.TabLayoutCallback;
 import com.doing.bilibili.base.AppBaseActivity;
 import com.doing.bilibili.baselib.utils.ToastUtil;
 import com.doing.bilibili.baselib.utils.UIUtils;
+import com.doing.bilibili.biliplayer.widget.PlayView;
 import com.doing.bilibili.entity.argument.DetailData;
 import com.doing.bilibili.fragment.detail.BiliDetailHomeFragment;
 import com.doing.bilibili.uitls.TransitionHelper;
@@ -50,6 +51,8 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
     protected FloatingActionButton mFloatButton;
     @BindView(R.id.General_tablayout)
     protected TabLayout mTabLayout;
+    @BindView(R.id.General_toobar_player)
+    protected PlayView mPlayView;
     private String mAv;
 
     public static void newInstance(Activity context) {
@@ -81,6 +84,15 @@ public class BiliDetalActivity extends AppBaseActivity implements TabLayoutCallb
 
         DetailData detailData = intent.getParcelableExtra(DETAIL_DATA);
         mAv = detailData.getAv();
+
+        mFloatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPlayView.setVisibility(View.VISIBLE);
+                mToobarImageView.setVisibility(View.GONE);
+                mFloatButton.hide();
+            }
+        });
 
         Picasso.with(this)
                 .load(detailData.getTitleCover())

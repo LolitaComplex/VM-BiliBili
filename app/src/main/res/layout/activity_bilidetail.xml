@@ -28,10 +28,10 @@
                 android:id="@+id/General_collapsingToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:titleEnabled="false"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:statusBarScrim="@android:color/transparent"
+                app:titleEnabled="false"
                 >
 
                 <FrameLayout
@@ -39,6 +39,12 @@
                     android:layout_height="210dp"
 
                     >
+
+                    <com.doing.bilibili.biliplayer.widget.PlayView
+                        android:id="@+id/General_toobar_player"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"/>
 
                     <ImageView
                         android:id="@+id/General_toobar_bg"
@@ -64,9 +70,9 @@
                     android:id="@+id/General_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?android:attr/actionBarSize"
-                    app:logo="@drawable/ic_fab_play"
                     app:contentInsetStartWithNavigation="0dp"
                     app:layout_collapseMode="pin"
+                    app:logo="@drawable/ic_fab_play"
                     app:navigationContentDescription="0dp"
                     app:title="av666666"
                     >
@@ -89,10 +95,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                app:tabSelectedTextColor="@color/colorPrimary"
-                app:tabTextColor="@color/black"
                 app:tabIndicatorColor="@color/colorPrimary"
+                app:tabSelectedTextColor="@color/colorPrimary"
                 app:tabTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:tabTextColor="@color/black"
                 />
 
         </android.support.design.widget.AppBarLayout>

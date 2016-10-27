@@ -109,8 +109,6 @@ public abstract class HomeRecyclerFragment<T> extends BaseLoadingFragment<T> {
 
     @Override
     public void initViewWithData(T data) {
-        //设置该页面已经首次加载成功数据
-        setDataIsShowing(true);
         if (mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(false);
         }

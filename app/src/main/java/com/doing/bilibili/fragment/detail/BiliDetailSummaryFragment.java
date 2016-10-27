@@ -1,5 +1,6 @@
 package com.doing.bilibili.fragment.detail;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.LinearLayoutManager;
@@ -76,8 +77,6 @@ public class BiliDetailSummaryFragment extends BaseLoadingFragment<DetailRecomma
 
     @Override
     public void initViewWithData(DetailRecommandVideo data) {
-        setDataIsShowing(true);
-
         CommonAdapter<DetailRecommandVideo.ListBean> adapter =
                 new CommonAdapter<DetailRecommandVideo.ListBean>(
                         mContext, R.layout.item_recycler_common, data.getList()) {
@@ -189,6 +188,5 @@ public class BiliDetailSummaryFragment extends BaseLoadingFragment<DetailRecomma
         map.put(Key.SIGN, sign);
         return map;
     }
-
 
 }

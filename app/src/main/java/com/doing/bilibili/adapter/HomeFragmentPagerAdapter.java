@@ -1,14 +1,13 @@
 package com.doing.bilibili.adapter;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.doing.bilibili.R;
 import com.doing.bilibili.baselib.base.BaseFragment;
-import com.doing.bilibili.baselib.base.BaseLoadingFragment;
-import com.doing.bilibili.baselib.utils.LogUtils;
 import com.doing.bilibili.baselib.utils.UIUtils;
 import com.doing.bilibili.fragment.factory.HomeFragmentFactory;
 
@@ -16,7 +15,7 @@ import com.doing.bilibili.fragment.factory.HomeFragmentFactory;
  * Created by Doing on 2016/9/7.
  *
  */
-public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
+public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private final String[] mTitles;
     private final HomeFragmentFactory mFactory;
@@ -48,5 +47,10 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
         BaseFragment item = getItem(position);
         item.setContainerId(container.getId());
         return super.instantiateItem(container, position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 }

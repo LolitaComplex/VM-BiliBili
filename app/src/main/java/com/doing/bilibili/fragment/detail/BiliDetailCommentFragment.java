@@ -75,7 +75,6 @@ public class BiliDetailCommentFragment extends BaseLoadingFragment<DetailComment
 
     @Override
     public void initViewWithData(DetailComment data) {
-        setDataIsShowing(true);
 
         CommonAdapter<DetailComment.RepliesBean> adapter =
                 new CommonAdapter<DetailComment.RepliesBean>(

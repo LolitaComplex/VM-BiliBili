@@ -24,8 +24,6 @@ public abstract class BaseLoadingFragment<T> extends BaseFragment {
 
     private LoadingPage<T> mLoadingPage;
 
-    private boolean mDataIsShowing = false;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,8 +69,10 @@ public abstract class BaseLoadingFragment<T> extends BaseFragment {
     }
 
     public void show() {
-        if (mLoadingPage != null && !mDataIsShowing) {
+        int unKnownValue = LoadRusult.unknown.getValue();
+        if (mLoadingPage != null && mLoadingPage.getCurrentState() == unKnownValue) {
             mLoadingPage.show();
+            //设置该页面已经首次加载成功数据
         }
     }
 
@@ -80,10 +80,6 @@ public abstract class BaseLoadingFragment<T> extends BaseFragment {
         if (mLoadingPage != null) {
             mLoadingPage.show();
         }
-    }
-
-    protected void setDataIsShowing(boolean isShowing) {
-        this.mDataIsShowing = isShowing;
     }
 
 

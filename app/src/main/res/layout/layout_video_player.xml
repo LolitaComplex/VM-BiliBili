@@ -6,6 +6,7 @@
     >
 
     <com.doing.bilibili.biliplayer.widget.IjkVideoView
+        android:id="@+id/VideoPlayer_ijk_videoview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
@@ -14,7 +15,6 @@
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ViedoPalyer_bootom_bar_little"
         android:layout_alignParentBottom="true"
         layout="@layout/layout_video_player_bootom_bar_little"
         />

@@ -2,8 +2,11 @@ package com.doing.bilibili.baselib.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +32,24 @@ public class BaseFragment extends RxFragment {
 
     protected Subscription mSubscription;
 
+    @Override
+    public void onAttachFragment(Fragment childFragment) {
+        super.onAttachFragment(childFragment);
+        Log.e("FragmentStyle", "onAttachFragment");
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.e("FragmentStyle", "onCreate");
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContext = getActivity();
+
+        Log.e("FragmentStyle", "onCreateView");
 
         if (getClass() != null) {
             String name = this.getClass().getName();
@@ -73,9 +90,15 @@ public class BaseFragment extends RxFragment {
         if (mSubscription != null && !mSubscription.isUnsubscribed()) {
             mSubscription.unsubscribe();
         }
+        RecyclerView recyclerView = new RecyclerView(mContext);
+        LinearLayoutManager manager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+        manager.findViewByPosition(1);
+        recyclerView.findViewById(0);
+        recyclerView.findViewHolderForLayoutPosition(0);
     }
 
     //================= 模板方法 ==============
     protected void subscirp() {
     }
+
 }

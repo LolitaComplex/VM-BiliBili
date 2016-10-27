@@ -132,7 +132,7 @@ public abstract class LoadingPage<T> extends FrameLayout {
     }
 
     public enum LoadRusult {
-        error(2),empyt(3), success(4);
+        unknown(0),error(2),empyt(3), success(4);
 
         private int value;
 
@@ -146,7 +146,7 @@ public abstract class LoadingPage<T> extends FrameLayout {
     }
 
     public void show() {
-        if (mCurrentState == STATE_ERROR || mCurrentState == STATE_EMPTY) {
+        if (mCurrentState == STATE_ERROR || mCurrentState == STATE_EMPTY || mCurrentState == STATE_UNKOWN) {
             mCurrentState = STATE_LOADING;
         }
 
@@ -193,6 +193,10 @@ public abstract class LoadingPage<T> extends FrameLayout {
 
 
         showPage();
+    }
+
+    public int getCurrentState() {
+        return mCurrentState;
     }
 
     /*================= 模板方法 =======================*/
