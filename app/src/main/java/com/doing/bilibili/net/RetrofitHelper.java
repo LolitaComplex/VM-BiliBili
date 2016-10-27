@@ -71,9 +71,9 @@ public class RetrofitHelper {
                             .cache(cache)
                             .addInterceptor(interceptor)
                             .retryOnConnectionFailure(true)
-                            .connectTimeout(30, TimeUnit.SECONDS)
-                            .writeTimeout(20, TimeUnit.SECONDS)
-                            .readTimeout(20, TimeUnit.SECONDS)
+                            .connectTimeout(15, TimeUnit.SECONDS)
+                            .writeTimeout(15, TimeUnit.SECONDS)
+                            .readTimeout(15, TimeUnit.SECONDS)
                             .addInterceptor(new UserAgentInterceptor())
                             .build();
                 }

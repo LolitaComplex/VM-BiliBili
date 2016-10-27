@@ -35,13 +35,11 @@ public class BaseFragment extends RxFragment {
     @Override
     public void onAttachFragment(Fragment childFragment) {
         super.onAttachFragment(childFragment);
-        Log.e("FragmentStyle", "onAttachFragment");
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("FragmentStyle", "onCreate");
     }
 
     @Nullable
@@ -49,7 +47,6 @@ public class BaseFragment extends RxFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContext = getActivity();
 
-        Log.e("FragmentStyle", "onCreateView");
 
         if (getClass() != null) {
             String name = this.getClass().getName();

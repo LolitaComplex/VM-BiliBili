@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import com.doing.bilibili.baselib.utils.UIUtils;
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -156,6 +158,7 @@ public abstract class LoadingPage<T> extends FrameLayout {
             return;
         }
 
+
        responseObservable
                 .map(new Func1<Response<T>, T>() {
                     @Override
@@ -173,6 +176,7 @@ public abstract class LoadingPage<T> extends FrameLayout {
                 .subscribe(new Action1<T>() {
                     @Override
                     public void call(T t) {
+                        Log.e("LoadingPage", "请求成功了 Success");
                         if (t == null) {
                             mCurrentState = STATE_ERROR;
                         } else {
@@ -186,8 +190,17 @@ public abstract class LoadingPage<T> extends FrameLayout {
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
+                        Log.e("LoadingPage", "请求失败了了 Failure");
                         mCurrentState = STATE_ERROR;
                         showPage();
+                    }
+                }, new Action0() {
+                    @Override
+                    public void call() {
+                        Log.e("LoadingPage", "请求完成了了 Complete");
+                        if (mCurrentState == STATE_LOADING) {
+                            mCurrentState = STATE_ERROR;
+                        }
                     }
                 });
 
