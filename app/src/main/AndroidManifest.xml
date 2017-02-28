@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.AppCacheActivity"/>
-        <activity android:name=".activity.SettingActivity"/>
-        <activity android:name=".activity.BiliDetalActivity"/>
+        <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".ui.activity.LoginActivity"/>
+        <activity android:name=".ui.activity.AppCacheActivity"/>
+        <activity android:name=".ui.activity.SettingActivity"/>
+        <activity android:name=".ui.activity.BiliDetalActivity"/>
     </application>
 
 </manifest>

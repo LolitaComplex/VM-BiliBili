@@ -43,7 +43,7 @@
         />
 
 
-    <com.doing.bilibili.ui.GridViewFactoryView
+    <com.doing.bilibili.ui.widget.GridViewFactoryView
         android:id="@+id/GeneralLivingItem_body_cvf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

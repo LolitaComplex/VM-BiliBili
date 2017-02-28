@@ -12,7 +12,11 @@ import android.widget.FrameLayout;
 
 import com.doing.bilibili.baselib.R;
 import com.doing.bilibili.baselib.entity.Response;
+import com.doing.bilibili.baselib.utils.LogUtils;
 import com.doing.bilibili.baselib.utils.UIUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import rx.Observable;
 import rx.Subscription;
@@ -176,7 +180,7 @@ public abstract class LoadingPage<T> extends FrameLayout {
                 .subscribe(new Action1<T>() {
                     @Override
                     public void call(T t) {
-                        Log.e("LoadingPage", "请求成功了 Success");
+//                        Log.e("LoadingPage", "请求成功了 Success");
                         if (t == null) {
                             mCurrentState = STATE_ERROR;
                         } else {
@@ -190,14 +194,14 @@ public abstract class LoadingPage<T> extends FrameLayout {
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        Log.e("LoadingPage", "请求失败了了 Failure");
+//                        Log.e("LoadingPage", "请求失败了了 Failure");
                         mCurrentState = STATE_ERROR;
                         showPage();
                     }
                 }, new Action0() {
                     @Override
                     public void call() {
-                        Log.e("LoadingPage", "请求完成了了 Complete");
+//                        Log.e("LoadingPage", "请求完成了了 Complete");
                         if (mCurrentState == STATE_LOADING) {
                             mCurrentState = STATE_ERROR;
                         }

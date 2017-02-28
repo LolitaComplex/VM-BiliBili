@@ -40,7 +40,7 @@
 
                     >
 
-                    <com.doing.bilibili.biliplayer.widget.PlayView
+                    <com.doing.bilibili.ui.biliplayer.widget.PlayView
                         android:id="@+id/General_toobar_player"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

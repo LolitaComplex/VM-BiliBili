@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'android-apt'
+apply plugin: 'org.greenrobot.greendao'
+
 
 allprojects {
     repositories {
@@ -9,12 +11,12 @@ allprojects {
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 24
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -29,20 +31,22 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.2.0'
-    compile 'com.android.support:recyclerview-v7:24.2.0'
     //butterknife
-    compile 'com.jakewharton:butterknife:8.2.1'
+    compile commonDependencies.supportAppcompat
+    compile commonDependencies.supportDesign
+    compile commonDependencies.supportRecyclerView
+    compile commonDependencies.supportCardView
+    compile commonDependencies.butterKnife
+    //Rxlifecycle 防止Rx内存泄露
+    compile commonDependencies.rxlifecycle
+    compile commonDependencies.rxlifecycleComponents
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
     //Logger输出
     compile 'com.github.tianzhijiexian:logger:v11'
-    //Rxlifecycle 防止Rx内存泄露
-    compile 'com.trello:rxlifecycle-components:0.6.0'
-    compile 'com.trello:rxlifecycle:0.6.0'
     //gson
     compile 'com.google.code.gson:gson:2.7'
-
     //图片
     compile 'com.squareup.picasso:picasso:2.3.2'
-
+    //数据库
+    compile 'org.greenrobot:greendao:3.2.0'
 }

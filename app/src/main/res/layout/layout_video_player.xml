@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     >
 
-    <com.doing.bilibili.biliplayer.widget.IjkVideoView
+    <com.doing.bilibili.ui.biliplayer.widget.IjkVideoView
         android:id="@+id/VideoPlayer_ijk_videoview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

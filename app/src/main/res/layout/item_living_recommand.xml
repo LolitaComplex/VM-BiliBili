@@ -30,7 +30,7 @@
         />
 
 
-    <com.doing.bilibili.ui.GridViewFactoryView
+    <com.doing.bilibili.ui.widget.GridViewFactoryView
         android:id="@+id/LivingRecommendItem_body1_cvf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         app:gridSize="7"
         />
 
-    <com.doing.bilibili.ui.GridViewFactoryView
+    <com.doing.bilibili.ui.widget.GridViewFactoryView
         android:id="@+id/LivingRecommendItem_body2_cvf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

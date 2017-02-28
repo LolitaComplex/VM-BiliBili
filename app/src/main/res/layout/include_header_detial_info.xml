@@ -67,7 +67,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         >
 
-        <com.doing.bilibili.ui.BiliDetailFunctionView
+        <com.doing.bilibili.ui.biliplayer.widget.BiliDetailFunctionView
             android:id="@+id/BiliDetailSummaryFragment_header_ll_share"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
             app:amountColor="@color/green"
             />
 
-        <com.doing.bilibili.ui.BiliDetailFunctionView
+        <com.doing.bilibili.ui.biliplayer.widget.BiliDetailFunctionView
             android:id="@+id/BiliDetailSummaryFragment_header_ll_coin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
             app:amountColor="@color/yellow"
             />
 
-        <com.doing.bilibili.ui.BiliDetailFunctionView
+        <com.doing.bilibili.ui.biliplayer.widget.BiliDetailFunctionView
             android:id="@+id/BiliDetailSummaryFragment_header_ll_collection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
             app:amountColor="@color/pink"
             />
 
-        <com.doing.bilibili.ui.BiliDetailFunctionView
+        <com.doing.bilibili.ui.biliplayer.widget.BiliDetailFunctionView
             android:id="@+id/BiliDetailSummaryFragment_header_ll_download"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

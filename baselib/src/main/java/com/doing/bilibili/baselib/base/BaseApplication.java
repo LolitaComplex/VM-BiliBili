@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Process;
 
+import com.doing.bilibili.baselib.entity.cache.DaoMaster;
+import com.doing.bilibili.baselib.entity.cache.DaoSession;
 
 
 /**
@@ -14,6 +16,7 @@ import android.os.Process;
 public class BaseApplication extends Application{
 
     private static BaseApplication application;
+    private DaoSession mDaoSession;
 
     //主线程Id
     private static int mainProcessId;
@@ -28,6 +31,9 @@ public class BaseApplication extends Application{
         mainProcessId = Process.myTid();
         handler = new Handler(getMainLooper());
 
+        DaoMaster.DevOpenHelper heler = new DaoMaster.DevOpenHelper(this, "cache-db", null);
+        DaoMaster master = new DaoMaster(heler.getWritableDatabase());
+        mDaoSession = master.newSession();
     }
 
     public static int getMainId(){
@@ -40,5 +46,9 @@ public class BaseApplication extends Application{
 
     public static Context getApplication(){
         return application;
+    }
+
+    public DaoSession getDaoSession() {
+        return mDaoSession;
     }
 }
